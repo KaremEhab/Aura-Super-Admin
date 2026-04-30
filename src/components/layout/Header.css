@@ -1,0 +1,112 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 48px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: transparent;
+  transition: background-color 0.3s, backdrop-filter 0.3s;
+}
+
+.header.scrolled {
+  background-color: var(--sidebar);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: var(--sidebar);
+  border: 1px solid var(--stroke);
+  border-radius: 12px;
+  padding: 10px 16px;
+  width: 400px;
+  gap: 12px;
+  transition: border-color 0.2s;
+}
+
+.search-bar:focus-within {
+  border-color: var(--primary);
+}
+
+.search-icon {
+  color: var(--subtitle);
+}
+
+.search-bar input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--title);
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.search-bar input::placeholder {
+  color: var(--subtitle);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--stroke);
+  background-color: transparent;
+  color: var(--subtitle);
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.icon-btn:hover {
+  background-color: var(--sidebar);
+  color: var(--title);
+}
+
+.notification-dot {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: var(--alert);
+  color: var(--white);
+  font-size: 0.6rem;
+  font-weight: bold;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--background);
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 10px 20px;
+  border-radius: 24px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-lite);
+}

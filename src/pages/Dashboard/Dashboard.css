@@ -1,0 +1,57 @@
+.dashboard-header-text {
+  margin-bottom: 32px;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--title);
+  margin: 0 0 8px 0;
+}
+
+.page-subtitle {
+  color: var(--subtitle);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.dashboard-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.grid-row {
+  display: flex;
+  gap: 24px;
+}
+
+.row-1 .col-gmv {
+  flex: 2;
+}
+
+.row-1 .col-alerts {
+  flex: 1;
+}
+
+.row-3 {
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.row-3 .col-approvals {
+  flex: 1;
+  max-width: 400px;
+}
+
+.row-3 .col-directory {
+  flex: 2;
+}
+
+/* Global Card Component Styles */
+.card {
+  background-color: transparent;
+  border: 1px solid var(--stroke);
+  border-radius: 12px;
+  padding: 24px;
+}

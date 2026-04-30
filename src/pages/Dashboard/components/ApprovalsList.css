@@ -1,0 +1,102 @@
+.approvals-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.approvals-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.requests-badge {
+  background-color: var(--primary-lite);
+  color: var(--primary);
+  border: 1px solid var(--primary-border);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.approvals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.approval-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background-color: var(--sidebar);
+  border: 1px solid var(--stroke);
+  border-radius: 8px;
+}
+
+.approval-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.approval-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.approval-info h4 {
+  margin: 0 0 4px 0;
+  color: var(--title);
+  font-size: 0.9rem;
+}
+
+.approval-info p {
+  margin: 0;
+  color: var(--subtitle);
+  font-size: 0.75rem;
+}
+
+.approval-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-reject, .btn-approve {
+  flex: 1;
+  padding: 10px;
+  border-radius: 24px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.btn-reject {
+  background-color: transparent;
+  color: var(--subtitle);
+  border: 1px solid var(--stroke);
+}
+
+.btn-reject:hover {
+  background-color: var(--alert-lite);
+  color: var(--alert);
+  border-color: var(--alert-border);
+}
+
+.btn-approve {
+  background-color: var(--primary);
+  color: var(--white);
+  border: 1px solid var(--primary);
+}
+
+.btn-approve:hover {
+  background-color: var(--primary-lite);
+  color: var(--primary);
+}
