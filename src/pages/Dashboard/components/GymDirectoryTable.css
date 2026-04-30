@@ -147,3 +147,14 @@
 .text-right {
   text-align: right;
 }
+
+@media (max-width: 768px) {
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .directory-actions {
+    flex-wrap: wrap;
+  }
+}

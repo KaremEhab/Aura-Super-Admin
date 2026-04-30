@@ -10,9 +10,32 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  transition: margin-left 0.3s;
 }
 
 .main-content {
   flex-grow: 1;
   padding: 0 48px 48px 48px;
+}
+
+@media (max-width: 1024px) {
+  .main-wrapper {
+    margin-left: 0;
+  }
+  
+  .main-content {
+    padding: 0 20px 20px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding-bottom: 80px; /* Space for bottom nav */
+  }
+}
+
+@media (max-width: 640px) {
+  .main-content {
+    padding: 0 12px 12px 12px;
+  }
 }

@@ -14,9 +14,9 @@ const navItems = [
   { icon: HelpCircle, label: 'SUPPORT' },
 ];
 
-export function Sidebar() {
+export function Sidebar({ isOpen, onClose }) {
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-logo">
         <img src={auraLogo} alt="Aura Fit Logo" />
         <span className="logo-text" style={{ color: 'var(--primary)' }}>AURA.FIT.</span>

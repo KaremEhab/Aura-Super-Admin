@@ -26,6 +26,10 @@
   gap: 24px;
 }
 
+.grid-row > div {
+  min-width: 0;
+}
+
 .row-1 .col-gmv {
   flex: 2;
 }
@@ -54,4 +58,23 @@
   border: 1px solid var(--stroke);
   border-radius: 12px;
   padding: 24px;
+  max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .grid-row {
+    flex-direction: column;
+  }
+  
+  .row-3 .col-approvals {
+    max-width: none;
+  }
+  
+  .card {
+    padding: 16px;
+  }
 }

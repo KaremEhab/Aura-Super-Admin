@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Search, RefreshCcw, Moon, Sun, Bell, Plus } from 'lucide-react';
+import { Search, RefreshCcw, Moon, Sun, Bell, Plus, Menu } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
+import auraLogo from '../../assets/Aura.svg';
 import './Header.css';
 
-export function Header() {
+export function Header({ onMenuClick }) {
   const { isDark, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
 
@@ -17,9 +18,18 @@ export function Header() {
 
   return (
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
-      <div className="search-bar">
-        <Search size={18} className="search-icon" />
-        <input type="text" placeholder="Search systems..." />
+      <div className="header-left">
+        <button className="menu-btn" onClick={onMenuClick}>
+          <Menu size={24} />
+        </button>
+        <div className="mobile-logo">
+          <img src={auraLogo} alt="Aura Fit Logo" />
+          <span className="logo-text">AURA.FIT.</span>
+        </div>
+        <div className="search-bar">
+          <Search size={18} className="search-icon" />
+          <input type="text" placeholder="Search systems..." />
+        </div>
       </div>
 
       <div className="header-actions">

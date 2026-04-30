@@ -97,3 +97,19 @@
   border: 1px solid var(--primary);
   border-bottom: none;
 }
+
+@media (max-width: 768px) {
+  .gmv-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .payment-node {
+    width: 100%;
+    text-align: left;
+  }
+  
+  .node-icon {
+    justify-content: flex-start;
+  }
+}
