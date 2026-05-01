@@ -35,8 +35,8 @@
   align-items: center;
   background-color: var(--sidebar);
   border: 1px solid var(--stroke);
-  border-radius: 12px;
-  padding: 10px 16px;
+  border-radius: 20px;
+  padding: 10px 18px;
   width: 400px;
   gap: 12px;
   transition: border-color 0.2s;

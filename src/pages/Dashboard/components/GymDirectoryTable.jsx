@@ -1,4 +1,5 @@
 import React from 'react';
+import { PowerOff, RefreshCcw, CheckCircle, Settings } from 'lucide-react';
 import { Badge } from '../../../components/ui/Badge';
 import './GymDirectoryTable.css';
 
@@ -11,12 +12,21 @@ const getStatusVariant = (status) => {
   }
 };
 
-const getActionLabel = (status) => {
+const getActionIcon = (status) => {
   switch (status) {
-    case 'ACTIVE': return 'KILL SWITCH';
-    case 'SUSPENDED': return 'REACTIVATE';
-    case 'PENDING': return 'ACTIVATE';
-    default: return 'MANAGE';
+    case 'ACTIVE': return <PowerOff size={16} />;
+    case 'SUSPENDED': return <RefreshCcw size={16} />;
+    case 'PENDING': return <CheckCircle size={16} />;
+    default: return <Settings size={16} />;
+  }
+};
+
+const getActionTitle = (status) => {
+  switch (status) {
+    case 'ACTIVE': return 'Kill Switch';
+    case 'SUSPENDED': return 'Reactivate';
+    case 'PENDING': return 'Activate';
+    default: return 'Manage';
   }
 };
 
@@ -65,8 +75,11 @@ export function GymDirectoryTable({ directory }) {
                   <Badge variant={getStatusVariant(gym.status)}>{gym.status}</Badge>
                 </td>
                 <td className="text-right">
-                  <button className={`btn-action btn-${gym.status.toLowerCase()}`}>
-                    {getActionLabel(gym.status)}
+                  <button 
+                    className={`btn-action btn-${gym.status.toLowerCase()}`} 
+                    title={getActionTitle(gym.status)}
+                  >
+                    {getActionIcon(gym.status)}
                   </button>
                 </td>
               </tr>
