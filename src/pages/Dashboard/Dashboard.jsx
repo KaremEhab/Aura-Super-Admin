@@ -15,28 +15,28 @@ export function Dashboard() {
         <p className="page-subtitle">Real-time health and revenue monitoring for AURA.FIT. global infrastructure.</p>
       </div>
 
-      <div className="dashboard-grid">
+      <div className="flex flex-col gap-6 w-full">
         {/* Row 1 */}
-        <div className="grid-row row-1">
-          <div className="col-gmv">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2">
             <GMVChart data={dashboardData.gmv} />
           </div>
-          <div className="col-alerts">
+          <div className="lg:col-span-1">
             <SystemAlerts alerts={dashboardData.alerts} />
           </div>
         </div>
 
         {/* Row 2 */}
-        <div className="grid-row" style={{ marginTop: '40px' }}>
+        <div className="w-full">
           <StatCards stats={dashboardData.stats} />
         </div>
 
         {/* Row 3 */}
-        <div className="grid-row row-3">
-          <div className="col-approvals">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6">
+          <div className="lg:col-span-1">
             <ApprovalsList approvals={dashboardData.approvals} />
           </div>
-          <div className="col-directory">
+          <div className="lg:col-span-3">
             <GymDirectoryTable directory={dashboardData.directory} />
           </div>
         </div>

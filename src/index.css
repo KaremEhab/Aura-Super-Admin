@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   --text: var(--subtitle);
   --text-h: var(--title);
@@ -97,4 +99,13 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+/* Globally Hide All Scrollbars */
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }

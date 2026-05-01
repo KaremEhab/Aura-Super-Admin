@@ -22,20 +22,20 @@ const getActionLabel = (status) => {
 
 export function GymDirectoryTable({ directory }) {
   return (
-    <div className="card directory-card">
-      <div className="directory-header">
-        <h3 className="card-title">
+    <div className="bg-sidebar border border-stroke rounded-xl overflow-hidden h-full">
+      <div className="p-4 border-b border-stroke flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <h3 className="font-bold text-[var(--title)]">
           Gym Directory Control 
-          <span className="directory-stats"> ( 68 GYMs ) ( 43 PTs )</span>
+          <span className="text-[var(--subtitle)] text-sm ml-2"> ( 68 GYMs ) ( 43 PTs )</span>
         </h3>
-        <div className="directory-actions">
+        <div className="flex gap-2">
           <button className="btn-secondary">Export CSV</button>
           <button className="btn-secondary">View Full Registry</button>
         </div>
       </div>
 
-      <div className="table-responsive">
-        <table className="directory-table">
+      <div className="overflow-x-auto">
+        <table className="min-w-[700px] w-full text-left directory-table">
           <thead>
             <tr>
               <th>GYM IDENTITY</th>

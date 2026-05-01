@@ -4,7 +4,7 @@ import './StatCards.css';
 
 export function StatCards({ stats }) {
   return (
-    <div className="stat-cards-container">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
       {/* Supabase DB */}
       <div className="card stat-card">
         <div className="stat-header">
