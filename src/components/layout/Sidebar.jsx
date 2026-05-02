@@ -3,18 +3,20 @@ import { Home, Dumbbell, User, Users, DollarSign, Server, BookOpen, HelpCircle, 
 import './Sidebar.css';
 import auraLogo from '../../assets/Aura.svg';
 
-const navItems = [
-  { icon: Home, label: 'DASHBOARD', active: true },
-  { icon: Dumbbell, label: 'GYMS' },
-  { icon: User, label: 'PERSONAL TRAINER' },
-  { icon: Users, label: 'TRAINEES' },
-  { icon: DollarSign, label: 'FINANCIALS' },
-  { icon: Server, label: 'INFRASTRUCTURE' },
-  { icon: BookOpen, label: 'LIBRARY' },
-  { icon: HelpCircle, label: 'SUPPORT' },
-];
 
-export function Sidebar({ isOpen, onClose }) {
+
+export function Sidebar({ isOpen, onClose, currentPage, onNavigate }) {
+  const navItems = [
+    { id: 'dashboard', icon: Home, label: 'DASHBOARD' },
+    { id: 'gyms', icon: Dumbbell, label: 'GYMS' },
+    { id: 'pt', icon: User, label: 'PERSONAL TRAINER' },
+    { id: 'trainees', icon: Users, label: 'TRAINEES' },
+    { id: 'financials', icon: DollarSign, label: 'FINANCIALS' },
+    { id: 'infra', icon: Server, label: 'INFRASTRUCTURE' },
+    { id: 'library', icon: BookOpen, label: 'LIBRARY' },
+    { id: 'support', icon: HelpCircle, label: 'SUPPORT' },
+  ];
+
   return (
     <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-logo">
@@ -26,12 +28,15 @@ export function Sidebar({ isOpen, onClose }) {
 
       <nav className="sidebar-nav">
         <ul>
-          {navItems.map((item, index) => (
-            <li key={index} className={item.active ? 'active' : ''}>
-              <a href="#">
+          {navItems.map((item) => (
+            <li key={item.id} className={currentPage === item.id ? 'active' : ''}>
+              <button 
+                className="nav-btn"
+                onClick={() => onNavigate(item.id)}
+              >
                 <item.icon size={16} />
                 <span>{item.label}</span>
-              </a>
+              </button>
             </li>
           ))}
         </ul>
@@ -43,11 +48,14 @@ export function Sidebar({ isOpen, onClose }) {
           <p className="palette-desc">Press <kbd>⌘ K</kbd> for new gym check-in or gym creation.</p>
         </div>
 
-        <div className="user-profile">
+        <div 
+          className={`user-profile ${currentPage === 'settings' ? 'active-profile' : ''}`}
+          onClick={() => onNavigate('settings')}
+        >
           <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&auto=format&fit=crop" alt="User" />
           <div className="user-info">
             <h4>KAREEM EHAB</h4>
-            <a href="#">Manage profile</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('settings'); }}>Manage profile</a>
           </div>
           <ChevronRight size={16} className="arrow" />
         </div>

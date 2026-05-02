@@ -1,0 +1,293 @@
+import React from 'react';
+import { Save, Shield, ShieldCheck, CreditCard, Database, Copy, Cloud, Settings, Trash2, History } from 'lucide-react';
+import './AccountSettings.css';
+
+export function AccountSettings() {
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text);
+    // Optional: Add a simple toast or feedback here
+  };
+
+  return (
+    <div className="settings-page">
+      <div className="settings-header-text">
+        <h1 className="page-title">Account Settings</h1>
+        <p className="page-subtitle">Manage your super-admin profile, security credentials, and platform integrations.</p>
+      </div>
+
+      <div className="settings-grid">
+        {/* Account Information & Security Row */}
+        <div className="settings-row top-row">
+          <div className="card account-info-card">
+            <div className="card-header-with-action">
+              <h3 className="section-title">Account Information</h3>
+              <button className="btn-save">
+                <Save size={16} />
+                <span>Save Changes</span>
+              </button>
+            </div>
+            
+            <div className="form-grid">
+              <div className="form-group">
+                <label>Full Name</label>
+                <input type="text" defaultValue="Kareem Ehab" />
+              </div>
+              <div className="form-group">
+                <label>Email Address</label>
+                <input type="email" defaultValue="karemehab24@gmail.com" />
+              </div>
+              <div className="form-group">
+                <label>Role</label>
+                <div className="role-badge">AURA OWNER</div>
+              </div>
+              <div className="form-group">
+                <label>Phone</label>
+                <input type="text" defaultValue="+20 111 219 0563" />
+              </div>
+            </div>
+          </div>
+
+          <div className="card security-card">
+            <div className="card-header-simple">
+              <Shield className="text-primary" size={20} />
+              <h3 className="section-title">Security</h3>
+            </div>
+            <p className="section-desc">Two-Factor Authentication (2FA) adds an extra layer of security to your admin account.</p>
+            
+            <div className="status-box success">
+              <div className="status-label">
+                <span>2FA Status</span>
+                <span className="status-tag active">ACTIVE</span>
+              </div>
+              <ShieldCheck size={20} className="text-primary" />
+            </div>
+
+            <button className="btn-outline w-full">Configure 2FA</button>
+          </div>
+        </div>
+
+        {/* Integration Cards */}
+        <div className="integration-grid">
+          <div className="card integration-card">
+            <div className="integration-header">
+              <div className="integration-icon-label">
+                <CreditCard size={18} className="text-primary" />
+                <span>Fawry Payment</span>
+              </div>
+            </div>
+            <div className="integration-body">
+              <div className="api-key-box">
+                <code>FAW_90210_PRD</code>
+                <button 
+                  className="copy-btn" 
+                  onClick={() => copyToClipboard('FAW_90210_PRD')}
+                  title="Copy Key"
+                >
+                  <Copy size={14} />
+                </button>
+              </div>
+              <div className="connection-status">
+                <span className="status-dot online"></span>
+                <span>Live Connection</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="card integration-card">
+            <div className="integration-header">
+              <div className="integration-icon-label">
+                <Database size={18} className="text-primary" />
+                <span>Supabase</span>
+              </div>
+            </div>
+            <div className="integration-body">
+              <div className="api-key-box">
+                <code>SUPA_EYJ93021_PRD</code>
+                <button 
+                  className="copy-btn" 
+                  onClick={() => copyToClipboard('SUPA_EYJ93021_PRD')}
+                  title="Copy Key"
+                >
+                  <Copy size={14} />
+                </button>
+              </div>
+              <div className="connection-status">
+                <span className="status-dot online"></span>
+                <span>Live Connection</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="card integration-card">
+            <div className="integration-header">
+              <div className="integration-icon-label">
+                <Database size={18} className="text-primary" />
+                <span>Firebase</span>
+              </div>
+            </div>
+            <div className="integration-body">
+              <div className="api-key-box">
+                <code>FIREBASE_KJ45N32_PRD</code>
+                <button 
+                  className="copy-btn" 
+                  onClick={() => copyToClipboard('FIREBASE_KJ45N32_PRD')}
+                  title="Copy Key"
+                >
+                  <Copy size={14} />
+                </button>
+              </div>
+              <div className="connection-status">
+                <span className="status-dot online"></span>
+                <span>Syncing</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="card integration-card">
+            <div className="integration-header">
+              <div className="integration-icon-label">
+                <Cloud size={18} className="text-primary" />
+                <span>Cloudflare R2</span>
+              </div>
+            </div>
+            <div className="integration-body">
+              <div className="api-key-box">
+                <code>CF_ZONE_ADMIN_HQ</code>
+                <button 
+                  className="copy-btn" 
+                  onClick={() => copyToClipboard('CF_ZONE_ADMIN_HQ')}
+                  title="Copy Key"
+                >
+                  <Copy size={14} />
+                </button>
+              </div>
+              <div className="connection-status">
+                <span className="status-dot online"></span>
+                <span>Enterprise Protected</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Row */}
+        <div className="settings-row bottom-row">
+          <div className="card danger-card">
+            <h3 className="section-title text-alert">Danger Zone</h3>
+            
+            <div className="danger-item">
+              <div className="danger-info">
+                <h4>Flush Audit Logs</h4>
+                <p>Permanently delete activity logs older than 1 year. This action cannot be undone.</p>
+              </div>
+              <button className="btn-danger-outline">Clear Audit Logs</button>
+            </div>
+
+            <div className="danger-item">
+              <div className="danger-info">
+                <h4>Delete Admin Account</h4>
+                <p>Request account deletion. Requires confirmation from secondary super-admin.</p>
+              </div>
+              <button className="btn-danger-text">Initiate Account Deletion</button>
+            </div>
+          </div>
+
+          <div className="card prefs-card">
+            <div className="card-header-simple">
+              <h3 className="section-title">Platform Preferences</h3>
+            </div>
+            
+            <div className="prefs-list">
+              <div className="pref-item">
+                <div className="pref-info">
+                  <h4>Maintenance Mode</h4>
+                  <p>Set the entire platform to read-only for updates.</p>
+                </div>
+                <label className="switch">
+                  <input type="checkbox" />
+                  <span className="slider"></span>
+                </label>
+              </div>
+
+              <div className="pref-item">
+                <div className="pref-info">
+                  <h4>User Access Control</h4>
+                  <p>Manage permissions and roles for gym staff and administrators.</p>
+                </div>
+                <label className="switch">
+                  <input type="checkbox" />
+                  <span className="slider"></span>
+                </label>
+              </div>
+
+              <div className="pref-item">
+                <div className="pref-info">
+                  <h4>Email Notifications</h4>
+                  <p>Receive daily status reports for all gyms.</p>
+                </div>
+                <label className="switch">
+                  <input type="checkbox" defaultChecked />
+                  <span className="slider"></span>
+                </label>
+              </div>
+
+              <div className="pref-item">
+                <div className="pref-info">
+                  <h4>Automatic Backups</h4>
+                  <p>Back up infrastructure data every 6 hours.</p>
+                </div>
+                <label className="switch">
+                  <input type="checkbox" defaultChecked />
+                  <span className="slider"></span>
+                </label>
+              </div>
+
+              <div className="pref-item">
+                <div className="pref-info">
+                  <h4>Audit Logging</h4>
+                  <p>Track all administrative actions across the platform.</p>
+                </div>
+                <label className="switch">
+                  <input type="checkbox" defaultChecked />
+                  <span className="slider"></span>
+                </label>
+              </div>
+
+              <div className="pref-item">
+                <div className="pref-info">
+                  <h4>2FA Enforcement</h4>
+                  <p>Require all super-admins and gym owners to enable 2FA.</p>
+                </div>
+                <label className="switch">
+                  <input type="checkbox" />
+                  <span className="slider"></span>
+                </label>
+              </div>
+
+              <div className="pref-item">
+                <div className="pref-info">
+                  <h4>Beta Features</h4>
+                  <p>Get early access to experimental dashboard modules.</p>
+                </div>
+                <label className="switch">
+                  <input type="checkbox" />
+                  <span className="slider"></span>
+                </label>
+              </div>
+
+              <div className="pref-item">
+                <div className="pref-info">
+                  <h4>IP Security</h4>
+                  <p>Restrict logins to whitelisted administrative IPs.</p>
+                </div>
+                <label className="switch">
+                  <input type="checkbox" />
+                  <span className="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -76,7 +76,10 @@
   gap: 0;
 }
 
-.sidebar-nav li a {
+.sidebar-nav li .nav-btn {
+  width: 100%;
+  background: transparent;
+  border: none;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -87,14 +90,15 @@
   font-size: 0.75rem;
   font-weight: 700;
   transition: all 0.2s;
+  cursor: pointer;
 }
 
-.sidebar-nav li a:hover {
+.sidebar-nav li .nav-btn:hover {
   background-color: var(--sidebar);
   color: var(--title);
 }
 
-.sidebar-nav li.active a {
+.sidebar-nav li.active .nav-btn {
   background-color: var(--primary-lite);
   color: var(--primary);
   border-left: 4px solid var(--primary);
@@ -149,8 +153,13 @@
   transition: border-color 0.2s;
 }
 
-.user-profile:hover {
+.user-profile:hover, .user-profile.active-profile {
   border-color: var(--primary-border);
+}
+
+.user-profile.active-profile {
+  background-color: var(--primary-lite);
+  border-left: 4px solid var(--primary);
 }
 
 .user-profile img {

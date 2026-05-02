@@ -5,7 +5,7 @@ import { BottomNav } from './BottomNav';
 import { Plus } from 'lucide-react';
 import './DashboardLayout.css';
 
-export function DashboardLayout({ children }) {
+export function DashboardLayout({ children, currentPage, onNavigate }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
@@ -27,7 +27,15 @@ export function DashboardLayout({ children }) {
           onClick={() => setSidebarOpen(false)}
         />
       )}
-      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <Sidebar 
+        isOpen={sidebarOpen} 
+        onClose={() => setSidebarOpen(false)} 
+        currentPage={currentPage}
+        onNavigate={(page) => {
+          onNavigate(page);
+          setSidebarOpen(false); // Close sidebar on mobile after navigation
+        }}
+      />
       <div className="main-wrapper">
         <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
         <main className="main-content">
