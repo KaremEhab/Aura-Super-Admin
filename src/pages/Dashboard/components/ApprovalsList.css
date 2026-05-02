@@ -19,6 +19,9 @@
   padding: 4px 8px;
   border-radius: 12px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .approvals-list {
@@ -32,8 +35,9 @@
   flex-direction: column;
   gap: 16px;
   padding: 16px;
-  background-color: var(--sidebar);
+  background-color: var(--background);
   border: 1px solid var(--stroke);
+  border-left: 4px solid var(--secondary);
   border-radius: 8px;
 }
 

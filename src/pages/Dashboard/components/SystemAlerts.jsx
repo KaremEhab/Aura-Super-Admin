@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertTriangle, Server, CreditCard, Database } from 'lucide-react';
+import { AlertTriangle, Server, CreditCard, Database, ChevronRight } from 'lucide-react';
 import './SystemAlerts.css';
 
 const getIcon = (type) => {
@@ -19,7 +19,10 @@ export function SystemAlerts({ alerts }) {
           <AlertTriangle size={18} className="text-alert" />
           System Alerts
         </h3>
-        <span className="critical-badge">4 CRITICAL &gt;</span>
+        <span className="critical-badge">
+          4 CRITICAL
+          <ChevronRight size={12} />
+        </span>
       </div>
 
       <div className="alerts-list">

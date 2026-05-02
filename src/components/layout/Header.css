@@ -73,8 +73,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   border: 1px solid var(--stroke);
   background-color: transparent;
@@ -91,14 +91,14 @@
 
 .notification-dot {
   position: absolute;
-  top: -4px;
-  right: -4px;
+  top: -5px;
+  right: -5px;
   background-color: var(--alert);
   color: var(--white);
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   font-weight: bold;
-  width: 16px;
-  height: 16px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -110,19 +110,23 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background-color: transparent;
-  color: var(--primary);
-  border: 1px solid var(--primary);
-  padding: 10px 20px;
-  border-radius: 24px;
+  background-color: var(--background);
+  background-image: var(--gradient);
+  color: var(--title);
+  border: none;
+  padding: 0 24px;
+  height: 50px;
+  border-radius: 25px;
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-lite);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(34, 197, 94, 0.3);
 }
 
 @media (max-width: __BP_IPAD__) {
@@ -142,16 +146,17 @@
     margin-left: -8px;
   }
 
-  .search-bar {
-    width: 200px;
-  }
+
 
   .btn-primary span {
     display: none;
   }
 
   .btn-primary {
-    padding: 10px;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
     border-radius: 50%;
   }
 }

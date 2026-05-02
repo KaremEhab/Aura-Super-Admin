@@ -1,4 +1,5 @@
 import React from 'react';
+import { ChevronRight } from 'lucide-react';
 import './ApprovalsList.css';
 
 export function ApprovalsList({ approvals }) {
@@ -6,7 +7,10 @@ export function ApprovalsList({ approvals }) {
     <div className="card approvals-card">
       <div className="approvals-header">
         <h3 className="card-title">Approvals</h3>
-        <span className="requests-badge">32 Requests &gt;</span>
+        <span className="requests-badge">
+          32 Requests
+          <ChevronRight size={12} />
+        </span>
       </div>
 
       <div className="approvals-list">

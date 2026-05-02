@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutDashboard, Dumbbell, User, Users, DollarSign, Server, BookOpen, HelpCircle, LogOut, X } from 'lucide-react';
+import { LayoutDashboard, Dumbbell, User, Users, DollarSign, Server, BookOpen, HelpCircle, LogOut, X, ChevronRight } from 'lucide-react';
 import './Sidebar.css';
 import auraLogo from '../../assets/Aura.svg';
 
@@ -49,7 +49,7 @@ export function Sidebar({ isOpen, onClose }) {
             <h4>KAREEM EHAB</h4>
             <a href="#">Manage profile</a>
           </div>
-          <span className="arrow">&gt;</span>
+          <ChevronRight size={16} className="arrow" />
         </div>
 
         <button className="sign-out">
