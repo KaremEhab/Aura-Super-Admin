@@ -210,7 +210,7 @@
   border-color: transparent;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: __BP_IPAD__) {
   .sidebar {
     transform: translateX(-100%);
   }

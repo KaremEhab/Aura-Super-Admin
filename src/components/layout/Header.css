@@ -125,7 +125,7 @@
   background-color: var(--primary-lite);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: __BP_IPAD__) {
   .header {
     padding: 16px 20px;
   }
@@ -156,7 +156,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: __BP_MOBILE__) {
   .header {
     display: flex !important;
     justify-content: center;

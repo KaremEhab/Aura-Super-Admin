@@ -2,7 +2,7 @@
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: __BP_MOBILE__) {
   .bottom-nav {
     display: block;
     position: fixed;

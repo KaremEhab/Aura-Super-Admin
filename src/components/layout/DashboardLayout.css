@@ -12,7 +12,7 @@
   display: none;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: __BP_IPAD__) {
   .sidebar-overlay {
     display: block;
     position: fixed;
@@ -42,7 +42,7 @@
   padding: 0 48px 48px 48px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: __BP_IPAD__) {
   .main-wrapper {
     margin-left: 0;
   }
@@ -52,7 +52,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: __BP_MOBILE__) {
   .main-content {
     padding-bottom: 140px; /* Space for bottom nav and FAB */
   }
