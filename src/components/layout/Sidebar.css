@@ -55,6 +55,17 @@
   display: block;
 }
 
+.logo-icon-svg {
+  width: 32px;
+  height: 32px;
+  background-color: var(--primary);
+  mask: url(../../assets/Aura.svg) no-repeat center;
+  mask-size: contain;
+  -webkit-mask: url(../../assets/Aura.svg) no-repeat center;
+  -webkit-mask-size: contain;
+  display: block;
+}
+
 .logo-text {
   color: var(--title);
   font-size: 1.25rem;

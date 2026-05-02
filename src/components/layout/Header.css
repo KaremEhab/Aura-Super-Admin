@@ -121,12 +121,12 @@
   font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.2s;
-  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.2);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(34, 197, 94, 0.3);
+  box-shadow: 0 6px 16px rgba(var(--primary-rgb), 0.3);
 }
 
 @media (max-width: __BP_IPAD__) {
@@ -185,6 +185,17 @@
     height: 24px;
     display: block;
   }
+
+  .logo-icon-svg {
+  width: 24px;
+  height: 24px;
+  background-color: var(--primary);
+  mask: url(../../assets/Aura.svg) no-repeat center;
+  mask-size: contain;
+  -webkit-mask: url(../../assets/Aura.svg) no-repeat center;
+  -webkit-mask-size: contain;
+  display: block;
+}
 
   .mobile-logo .logo-text {
     color: var(--primary);

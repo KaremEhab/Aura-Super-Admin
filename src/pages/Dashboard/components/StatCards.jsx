@@ -58,19 +58,19 @@ export function StatCards({ stats }) {
         </div>
       </div>
 
-      {/* Live Capacity */}
+      {/* System Health */}
       <div className="card stat-card">
         <div className="stat-header">
-          <Users size={16} className="stat-icon text-primary" />
-          <span>LIVE CAPACITY</span>
+          <Zap size={16} className="stat-icon text-primary" />
+          <span>SYSTEM HEALTH</span>
         </div>
         <div className="stat-main">
-          <span className="stat-label">Active MAU</span>
-          <span className="stat-value">{stats.liveCapacity.activeMAU}</span>
+          <span className="stat-label">Platform Uptime</span>
+          <span className="stat-value">{stats.systemHealth.uptime}</span>
         </div>
         <div className="stat-footer">
           <span className="status-dot"></span>
-          <span>Current active sessions: {stats.liveCapacity.activeSessions}</span>
+          <span>Current Error Rate: {stats.systemHealth.errorRate}</span>
         </div>
       </div>
     </div>

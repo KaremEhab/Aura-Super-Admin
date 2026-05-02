@@ -71,7 +71,7 @@
     background-image: var(--gradient);
     color: var(--white);
     border: none;
-    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.4);
     z-index: 95;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
@@ -79,7 +79,7 @@
 
   .fab-button:hover {
     transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 8px 24px rgba(34, 197, 94, 0.5);
+    box-shadow: 0 8px 24px rgba(var(--primary-rgb), 0.5);
   }
 
   .fab-button:active {

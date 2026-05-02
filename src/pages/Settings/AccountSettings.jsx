@@ -1,11 +1,22 @@
 import React from 'react';
 import { Save, Shield, ShieldCheck, CreditCard, Database, Copy, Cloud, Settings, Trash2, History } from 'lucide-react';
+import auraLogo from '../../assets/Aura.svg';
 import './AccountSettings.css';
 
-export function AccountSettings() {
+export function AccountSettings({ branding, onBrandingChange }) {
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
-    // Optional: Add a simple toast or feedback here
+  };
+
+  const handleLogoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        onBrandingChange({ logo: reader.result });
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -166,6 +177,137 @@ export function AccountSettings() {
                 <span>Enterprise Protected</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* SaaS Management Row */}
+        <div className="settings-row top-row">
+          <div className="card billing-config-card">
+            <h3 className="section-title">Subscription & Billing</h3>
+            <p className="section-desc">Manage global pricing tiers and commission rates for Gyms and Personal Trainers.</p>
+            <div className="form-grid">
+               <div className="form-group">
+                 <label>Platform Commission (%)</label>
+                 <input type="number" defaultValue="15" />
+               </div>
+               <div className="form-group">
+                 <label>Free Trial Period (Days)</label>
+                 <input type="number" defaultValue="14" />
+               </div>
+            </div>
+
+            <div className="plans-management mt-6">
+              <h4 className="sub-section-title">GYM PLANS</h4>
+              <div className="plan-edit-list">
+                <div className="plan-edit-row">
+                  <div className="plan-main-fields">
+                    <input type="text" defaultValue="Regular" placeholder="Plan Name" />
+                    <input type="text" defaultValue="Up to 400 clients" placeholder="Description" />
+                  </div>
+                  <div className="plan-price-field">
+                    <span>$</span>
+                    <input type="number" defaultValue="49" />
+                    <span>/mo</span>
+                  </div>
+                </div>
+                <div className="plan-edit-row">
+                  <div className="plan-main-fields">
+                    <input type="text" defaultValue="Unlimited" placeholder="Plan Name" />
+                    <input type="text" defaultValue="No trainee limit" placeholder="Description" />
+                  </div>
+                  <div className="plan-price-field">
+                    <span>$</span>
+                    <input type="number" defaultValue="199" />
+                    <span>/mo</span>
+                  </div>
+                </div>
+              </div>
+
+              <h4 className="sub-section-title mt-6">PT PLANS</h4>
+              <div className="plan-edit-list">
+                <div className="plan-edit-row">
+                  <div className="plan-main-fields">
+                    <input type="text" defaultValue="Free" placeholder="Plan Name" />
+                    <input type="text" defaultValue="Up to 3 clients" placeholder="Description" />
+                  </div>
+                  <div className="plan-price-field">
+                    <span>$</span>
+                    <input type="number" defaultValue="0" />
+                    <span>/mo</span>
+                  </div>
+                </div>
+                <div className="plan-edit-row">
+                  <div className="plan-main-fields">
+                    <input type="text" defaultValue="Regular" placeholder="Plan Name" />
+                    <input type="text" defaultValue="Full standard features" placeholder="Description" />
+                  </div>
+                  <div className="plan-price-field">
+                    <span>$</span>
+                    <input type="number" defaultValue="29" />
+                    <span>/mo</span>
+                  </div>
+                </div>
+                <div className="plan-edit-row">
+                  <div className="plan-main-fields">
+                    <input type="text" defaultValue="Premium" placeholder="Plan Name" />
+                    <input type="text" defaultValue="Priority support & analytics" placeholder="Description" />
+                  </div>
+                  <div className="plan-price-field">
+                    <span>$</span>
+                    <input type="number" defaultValue="59" />
+                    <span>/mo</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="card branding-card">
+             <h3 className="section-title">Platform Branding</h3>
+             <p className="section-desc">Customize the white-label appearance for your clients and their trainees.</p>
+             <div className="branding-form">
+                <div className="form-group mb-6">
+                  <label>Brand Logo</label>
+                  <div className="logo-upload-container">
+                    <img src={branding.logo || auraLogo} alt="Logo Preview" className="logo-preview-box" />
+                    <div className="upload-actions">
+                      <input 
+                        type="file" 
+                        id="logo-upload" 
+                        accept="image/*" 
+                        onChange={handleLogoChange}
+                        hidden 
+                      />
+                      <label htmlFor="logo-upload" className="btn-upload-label">Change Logo</label>
+                    </div>
+                  </div>
+                </div>
+                <div className="form-group mb-6">
+                  <label>Primary Brand Color</label>
+                  <div className="color-picker-input">
+                    <div className="color-preview" style={{ backgroundColor: branding.color }}></div>
+                    <input 
+                      type="text" 
+                      value={branding.color} 
+                      onChange={(e) => onBrandingChange({ color: e.target.value })}
+                      placeholder="#000000"
+                    />
+                    <input 
+                      type="color" 
+                      value={branding.color} 
+                      onChange={(e) => onBrandingChange({ color: e.target.value })}
+                    />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label>Portal System Title</label>
+                  <input 
+                    type="text" 
+                    value={branding.name} 
+                    onChange={(e) => onBrandingChange({ name: e.target.value })}
+                  />
+                </div>
+             </div>
           </div>
         </div>
 

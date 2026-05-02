@@ -4,6 +4,7 @@ import { SystemAlerts } from './components/SystemAlerts';
 import { StatCards } from './components/StatCards';
 import { ApprovalsList } from './components/ApprovalsList';
 import { GymDirectoryTable } from './components/GymDirectoryTable';
+import { BusinessStats } from './components/BusinessStats';
 import { dashboardData } from './mockData';
 import './Dashboard.css';
 
@@ -16,7 +17,10 @@ export function Dashboard() {
       </div>
 
       <div className="flex flex-col gap-6 w-full">
-        {/* Row 1 */}
+        {/* Row 1: Business Overview */}
+        <BusinessStats stats={dashboardData.stats.business} />
+
+        {/* Row 2: Charts and Alerts */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2">
             <GMVChart data={dashboardData.gmv} />
@@ -26,12 +30,12 @@ export function Dashboard() {
           </div>
         </div>
 
-        {/* Row 2 */}
+        {/* Row 3: Infrastructure Health */}
         <div className="w-full">
-          <StatCards stats={dashboardData.stats} />
+          <StatCards stats={dashboardData.stats.infrastructure} />
         </div>
 
-        {/* Row 3 */}
+        {/* Row 4: Approvals and Directory */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6">
           <div className="lg:col-span-1">
             <ApprovalsList approvals={dashboardData.approvals} />

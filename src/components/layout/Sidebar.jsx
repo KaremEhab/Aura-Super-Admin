@@ -5,7 +5,7 @@ import auraLogo from '../../assets/Aura.svg';
 
 
 
-export function Sidebar({ isOpen, onClose, currentPage, onNavigate }) {
+export function Sidebar({ isOpen, onClose, currentPage, onNavigate, branding }) {
   const navItems = [
     { id: 'dashboard', icon: Home, label: 'DASHBOARD' },
     { id: 'gyms', icon: Dumbbell, label: 'GYMS' },
@@ -21,8 +21,12 @@ export function Sidebar({ isOpen, onClose, currentPage, onNavigate }) {
     <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-logo">
         <div className="logo-brand">
-          <img src={auraLogo} alt="Aura Fit Logo" />
-          <span className="logo-text" style={{ color: 'var(--primary)' }}>AURA.FIT.</span>
+          {branding.logo ? (
+            <img src={branding.logo} alt="Logo" />
+          ) : (
+            <div className="logo-icon-svg" />
+          )}
+          <span className="logo-text" style={{ color: 'var(--primary)' }}>{branding.name}</span>
         </div>
       </div>
 

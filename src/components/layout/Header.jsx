@@ -4,7 +4,7 @@ import { useTheme } from '../../context/ThemeContext';
 import auraLogo from '../../assets/Aura.svg';
 import './Header.css';
 
-export function Header({ onMenuClick }) {
+export function Header({ onMenuClick , branding}) {
   const { isDark, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
 
@@ -23,8 +23,12 @@ export function Header({ onMenuClick }) {
           <Menu size={24} />
         </button>
         <div className="mobile-logo">
-          <img src={auraLogo} alt="Aura Fit Logo" />
-          <span className="logo-text">AURA.FIT.</span>
+          {branding.logo ? (
+            <img src={branding.logo} alt="Logo" style={{ width: '24px', height: '24px', objectFit: 'contain' }} />
+          ) : (
+            <div className="logo-icon-svg" />
+          )}
+          <span className="logo-text" style={{ color: 'var(--primary)' }}>{branding.name}</span>
         </div>
         <div className="search-bar">
           <Search size={18} className="search-icon" />

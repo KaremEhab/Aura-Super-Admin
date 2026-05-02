@@ -21,10 +21,19 @@ export const dashboardData = {
     { id: 3, type: 'info', title: 'Db Backup Finished', description: 'Duration: 1.2s | Size: 1.4GB' }
   ],
   stats: {
-    supabase: { size: '2.4 TB', provisioned: '4.0 TB', usage: 72 },
-    edgeFunctions: { invocations: '42.8M', avgLatency: '12ms' },
-    cloudflare: { egress: '12.5 PB', cacheEfficiency: 99.2 },
-    liveCapacity: { activeMAU: '892,104', activeSessions: '14,202' }
+    business: {
+      totalGyms: { value: 142, growth: 8.4 },
+      activePTs: { value: 852, growth: 12.1 },
+      receptionists: { value: 342, growth: 3.2 },
+      totalTrainees: { value: '12,894', growth: 18.5 },
+      activeSubscriptions: { value: '8,921', status: 'Healthy' }
+    },
+    infrastructure: {
+      supabase: { size: '2.4 TB', provisioned: '4.0 TB', usage: 72 },
+      edgeFunctions: { invocations: '42.8M', avgLatency: '12ms' },
+      cloudflare: { egress: '12.5 PB', cacheEfficiency: 99.2 },
+      systemHealth: { uptime: '99.99%', errorRate: '0.001%' }
+    }
   },
   approvals: [
     { id: 1, name: 'Iron Temple Cairo', tier: 'Premium Branch (Downtown)', image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=150&auto=format&fit=crop' },

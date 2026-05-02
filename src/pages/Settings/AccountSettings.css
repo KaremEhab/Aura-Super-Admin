@@ -158,13 +158,9 @@
 
 .status-box.success {
   background-color: var(--primary-lite);
-  border: none;
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='8' ry='8' stroke='%2322C55E' stroke-width='2' stroke-dasharray='12%2c 12' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  border: solid var(--primary) 2px;
 }
 
-[data-theme='dark'] .status-box.success {
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='8' ry='8' stroke='%234BE277' stroke-width='2' stroke-dasharray='12%2c 12' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
-}
 
 .status-label {
   display: flex;
@@ -216,7 +212,31 @@
 @media (max-width: 640px) {
   .integration-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 12px; /* Slightly smaller gap for mobile */
+    gap: 12px;
+  }
+
+  .integration-card {
+    padding: 12px;
+  }
+
+  .integration-icon-label {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.8rem;
+  }
+
+  .api-key-box {
+    padding: 6px 8px;
+    margin-bottom: 8px;
+  }
+
+  .api-key-box code {
+    font-size: 0.6rem;
+  }
+
+  .connection-status {
+    font-size: 0.65rem;
   }
 }
 
@@ -437,3 +457,150 @@ input:focus + .slider {
 input:checked + .slider:before {
   transform: translateX(22px);
 }
+
+/* Plan Management */
+.sub-section-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--subtitle);
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.plan-edit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.plan-edit-row {
+  background: var(--background);
+  border: 1px solid var(--stroke);
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  transition: border-color 0.2s;
+}
+
+.plan-edit-row:focus-within {
+  border-color: var(--primary);
+}
+
+.plan-main-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.plan-main-fields input:first-child {
+  background: transparent;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--title);
+  padding: 0;
+  outline: none;
+}
+
+.plan-main-fields input:last-child {
+  background: transparent;
+  border: none;
+  font-size: 0.75rem;
+  color: var(--subtitle);
+  padding: 0;
+  outline: none;
+}
+
+.plan-price-field {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.plan-price-field input {
+  width: 50px;
+  background: transparent;
+  border: none;
+  text-align: right;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--primary);
+  outline: none;
+  padding: 0;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.plan-price-field input::-webkit-outer-spin-button,
+.plan-price-field input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.plan-price-field input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Color Picker UI */
+.color-picker-input {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.color-preview {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 2px solid var(--stroke);
+  flex-shrink: 0;
+}
+
+/* Branding Form */
+.branding-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Logo Upload UI */
+.logo-upload-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo-preview-box {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  border: 2px solid var(--stroke);
+  object-fit: contain;
+  background: var(--background);
+  padding: 8px;
+}
+
+.btn-upload-label {
+  background: var(--background);
+  border: 1px solid var(--stroke);
+  color: var(--title);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-upload-label:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.mt-6 { margin-top: 24px; }
+.mb-6 { margin-bottom: 24px; }
