@@ -34,20 +34,25 @@ function App() {
   };
 
   const renderPage = () => {
-    switch (currentPage) {
-      case 'dashboard':
-        return <Dashboard key="dashboard" />;
-      case 'settings':
-        return (
-          <AccountSettings 
-            key="settings" 
-            branding={branding}
-            onBrandingChange={updateBranding}
-          />
-        );
-      default:
-        return <Dashboard key="dashboard" />;
-    }
+    return (
+      <div key={currentPage} className="page-transition-wrapper">
+        {(() => {
+          switch (currentPage) {
+            case 'dashboard':
+              return <Dashboard />;
+            case 'settings':
+              return (
+                <AccountSettings 
+                  branding={branding}
+                  onBrandingChange={updateBranding}
+                />
+              );
+            default:
+              return <Dashboard />;
+          }
+        })()}
+      </div>
+    );
   };
 
   return (

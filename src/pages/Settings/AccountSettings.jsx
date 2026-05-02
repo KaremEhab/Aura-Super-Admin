@@ -28,8 +28,9 @@ export function AccountSettings({ branding, onBrandingChange }) {
 
       <div className="settings-grid">
         {/* Account Information & Security Row */}
-        <div className="settings-row top-row">
+        <div className="settings-row top-row animate-slide-up">
           <div className="card account-info-card">
+            {/* ... */}
             <div className="card-header-with-action">
               <h3 className="section-title">Account Information</h3>
               <button className="btn-save">
@@ -78,7 +79,7 @@ export function AccountSettings({ branding, onBrandingChange }) {
         </div>
 
         {/* Integration Cards */}
-        <div className="integration-grid">
+        <div className="integration-grid animate-slide-up delay-1">
           <div className="card integration-card">
             <div className="integration-header">
               <div className="integration-icon-label">
@@ -181,7 +182,7 @@ export function AccountSettings({ branding, onBrandingChange }) {
         </div>
 
         {/* SaaS Management Row */}
-        <div className="settings-row top-row">
+        <div className="settings-row top-row animate-slide-up delay-2">
           <div className="card billing-config-card">
             <h3 className="section-title">Subscription & Billing</h3>
             <p className="section-desc">Manage global pricing tiers and commission rates for Gyms and Personal Trainers.</p>
@@ -312,7 +313,7 @@ export function AccountSettings({ branding, onBrandingChange }) {
         </div>
 
         {/* Bottom Row */}
-        <div className="settings-row bottom-row">
+        <div className="settings-row bottom-row animate-slide-up delay-3">
           <div className="card danger-card">
             <h3 className="section-title text-alert">Danger Zone</h3>
             

@@ -18,10 +18,12 @@ export function Dashboard() {
 
       <div className="flex flex-col gap-6 w-full">
         {/* Row 1: Business Overview */}
-        <BusinessStats stats={dashboardData.stats.business} />
+        <div className="animate-slide-up">
+          <BusinessStats stats={dashboardData.stats.business} />
+        </div>
 
         {/* Row 2: Charts and Alerts */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-slide-up delay-1">
           <div className="lg:col-span-2">
             <GMVChart data={dashboardData.gmv} />
           </div>
@@ -31,12 +33,12 @@ export function Dashboard() {
         </div>
 
         {/* Row 3: Infrastructure Health */}
-        <div className="w-full">
+        <div className="w-full animate-slide-up delay-2">
           <StatCards stats={dashboardData.stats.infrastructure} />
         </div>
 
         {/* Row 4: Approvals and Directory */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6 animate-slide-up delay-3">
           <div className="lg:col-span-1">
             <ApprovalsList approvals={dashboardData.approvals} />
           </div>

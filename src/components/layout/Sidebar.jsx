@@ -6,6 +6,7 @@ import auraLogo from '../../assets/Aura.svg';
 
 
 export function Sidebar({ isOpen, onClose, currentPage, onNavigate, branding }) {
+  const [showPalette, setShowPalette] = React.useState(true);
   const navItems = [
     { id: 'dashboard', icon: Home, label: 'DASHBOARD' },
     { id: 'gyms', icon: Dumbbell, label: 'GYMS' },
@@ -47,10 +48,15 @@ export function Sidebar({ isOpen, onClose, currentPage, onNavigate, branding }) 
       </nav>
 
       <div className="sidebar-bottom">
-        <div className="command-palette">
-          <p className="palette-title">COMMAND PALETTE</p>
-          <p className="palette-desc">Press <kbd>⌘ K</kbd> for new gym check-in or gym creation.</p>
-        </div>
+        {showPalette && (
+          <div className="command-palette">
+            <button className="close-palette" onClick={() => setShowPalette(false)} aria-label="Dismiss">
+              <X size={16} />
+            </button>
+            <p className="palette-title">COMMAND PALETTE</p>
+            <p className="palette-desc">Press <kbd>⌘ K</kbd> for new gym check-in or gym creation.</p>
+          </div>
+        )}
 
         <div 
           className={`user-profile ${currentPage === 'settings' ? 'active-profile' : ''}`}
