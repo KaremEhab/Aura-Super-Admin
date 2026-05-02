@@ -3,6 +3,8 @@ import { DashboardLayout } from './components/layout/DashboardLayout';
 import { Dashboard } from './pages/Dashboard/Dashboard';
 import { AccountSettings } from './pages/Settings/AccountSettings';
 
+import { Support } from './pages/Support/Support';
+
 function App() {
   const [currentPage, setCurrentPage] = useState('dashboard');
   const [branding, setBranding] = useState({
@@ -47,6 +49,8 @@ function App() {
                   onBrandingChange={updateBranding}
                 />
               );
+            case 'support':
+              return <Support />;
             default:
               return <Dashboard />;
           }
