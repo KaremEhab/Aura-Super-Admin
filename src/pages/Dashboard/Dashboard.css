@@ -54,7 +54,7 @@
 
 /* Global Card Component Styles */
 .card {
-  background-color: transparent;
+  background-color: var(--sidebar);
   border: 1px solid var(--stroke);
   border-radius: 12px;
   padding: 24px;

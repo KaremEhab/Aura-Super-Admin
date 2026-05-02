@@ -36,7 +36,7 @@ export function GymDirectoryTable({ directory }) {
       <div className="p-4 border-b border-stroke flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h3 className="font-bold text-[var(--title)]">
           Gym Directory Control 
-          <span className="text-[var(--subtitle)] text-sm ml-2"> ( 68 GYMs ) ( 43 PTs )</span>
+          <span className="text-[var(--primary)] text-sm ml-2"> ( 68 GYMs ) ( 43 PTs )</span>
         </h3>
         <div className="flex gap-2">
           <button className="btn-secondary">Export CSV</button>

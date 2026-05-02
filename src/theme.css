@@ -18,6 +18,7 @@
   --formfield: #FFFFFF;
   --stroke: #E4E4E7;
   --gradient: linear-gradient(135deg, var(--primary-lite), var(--primary));
+  --overlay: rgba(255, 255, 255, 0.5);
 }
 
 [data-theme='dark'] {
@@ -40,6 +41,7 @@
   --formfield: #0F172A;
   --stroke: #1E293B;
   --gradient: linear-gradient(135deg, var(--primary-lite), var(--primary));
+  --overlay: rgba(0, 0, 0, 0.6);
 }
 
 /* Utility classes for App.jsx */
@@ -56,4 +58,4 @@
 .text-subtitle { color: var(--subtitle); }
 .hover\:text-primary-lite:hover { color: var(--primary-lite); }
 
-
+

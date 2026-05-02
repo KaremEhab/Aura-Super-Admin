@@ -1,27 +1,36 @@
 import React from 'react';
-import { LayoutDashboard, Dumbbell, User, DollarSign } from 'lucide-react';
+import { Menu, Search, RefreshCcw, Moon, Sun, Bell } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 import './BottomNav.css';
 
-const bottomNavItems = [
-  { icon: LayoutDashboard, label: 'DASHBOARD', active: true },
-  { icon: Dumbbell, label: 'GYMS' },
-  { icon: User, label: 'TRAINERS' },
-  { icon: DollarSign, label: 'FINANCE' },
-];
+export function BottomNav({ onMenuClick }) {
+  const { isDark, toggleTheme } = useTheme();
 
-export function BottomNav() {
   return (
     <nav className="bottom-nav">
-      <ul className="bottom-nav-list">
-        {bottomNavItems.map((item, index) => (
-          <li key={index} className={`bottom-nav-item ${item.active ? 'active' : ''}`}>
-            <a href="#">
-              <item.icon size={20} />
-              <span>{item.label}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
+      <div className="bottom-nav-container">
+        <button className="icon-btn menu-btn-mobile" onClick={onMenuClick}>
+          <Menu size={20} />
+        </button>
+
+        <div className="search-bar-mobile">
+          <Search size={16} className="search-icon" />
+          <input type="text" placeholder="Search..." />
+        </div>
+
+        <div className="bottom-nav-actions">
+          <button className="icon-btn">
+            <RefreshCcw size={16} />
+          </button>
+          <button className="icon-btn" onClick={toggleTheme}>
+            {isDark ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
+          <button className="icon-btn relative">
+            <Bell size={16} />
+            <span className="notification-dot">1</span>
+          </button>
+        </div>
+      </div>
     </nav>
   );
 }

@@ -4,6 +4,30 @@
   background-color: var(--background);
 }
 
+.sidebar-overlay {
+  display: none;
+}
+
+.fab-button {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--overlay);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 150;
+    cursor: pointer;
+  }
+}
+
 .main-wrapper {
   flex-grow: 1;
   margin-left: 280px; /* Sidebar width */
@@ -30,12 +54,39 @@
 
 @media (max-width: 768px) {
   .main-content {
-    padding-bottom: 80px; /* Space for bottom nav */
+    padding-bottom: 140px; /* Space for bottom nav and FAB */
+  }
+
+  .fab-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+    z-index: 95;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+  }
+
+  .fab-button:hover {
+    background-color: #1ea34d;
+  }
+
+  .fab-button:active {
+    transform: scale(0.95);
   }
 }
 
 @media (max-width: 640px) {
   .main-content {
-    padding: 0 12px 100px 12px; /* Space for bottom nav */
+    padding: 0 12px 140px 12px; /* Space for bottom nav and FAB */
   }
 }

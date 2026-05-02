@@ -1,5 +1,5 @@
 .bottom-nav {
-  display: none; /* Hidden by default on desktop */
+  display: none;
 }
 
 @media (max-width: 768px) {
@@ -14,37 +14,93 @@
     -webkit-backdrop-filter: blur(16px);
     border-top: 1px solid var(--stroke);
     z-index: 100;
-    padding: 8px 16px 24px 16px; /* Extra bottom padding for safe area */
+    padding: 12px 16px 24px 16px;
   }
 
-  .bottom-nav-list {
+  .bottom-nav-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    gap: 6px;
   }
 
-  .bottom-nav-item a {
+  .menu-btn-mobile {
+    background: transparent;
+    border: none;
+    color: var(--title);
+    cursor: pointer;
+    padding: 6px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    margin-left: -6px;
+  }
+
+  .search-bar-mobile {
+    display: flex;
+    align-items: center;
+    background-color: var(--background);
+    border: 1px solid var(--stroke);
+    border-radius: 20px;
+    padding: 8px 12px;
+    flex-grow: 1;
+    margin: 0 8px;
+    gap: 8px;
+  }
+
+  .search-bar-mobile input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--title);
+    width: 100%;
+    font-size: 0.85rem;
+  }
+
+  .search-bar-mobile input::placeholder {
     color: var(--subtitle);
-    text-decoration: none;
-    padding: 8px;
-    border-radius: 8px;
+  }
+
+  .bottom-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .bottom-nav .icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--stroke);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--subtitle);
+    background: transparent;
+    cursor: pointer;
     transition: all 0.2s;
+    position: relative;
   }
 
-  .bottom-nav-item a span {
-    font-size: 0.65rem;
-    font-weight: 700;
+  .bottom-nav .icon-btn:hover {
+    background-color: var(--background);
+    color: var(--title);
   }
 
-  .bottom-nav-item.active a {
-    color: var(--primary);
+  .bottom-nav .notification-dot {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background-color: var(--alert);
+    color: var(--background);
+    font-size: 0.75rem;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--sidebar);
   }
 }

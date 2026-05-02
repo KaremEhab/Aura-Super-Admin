@@ -36,7 +36,7 @@
   background-color: var(--sidebar);
   border: 1px solid var(--stroke);
   border-radius: 20px;
-  padding: 10px 18px;
+  padding: 12px 22px;
   width: 400px;
   gap: 12px;
   transition: border-color 0.2s;
@@ -157,7 +157,16 @@
 }
 
 @media (max-width: 768px) {
-  .menu-btn {
+  .header {
+    display: flex !important;
+    justify-content: center;
+    padding: 16px;
+  }
+  .header-left {
+    justify-content: center;
+    width: 100%;
+  }
+  .menu-btn, .search-bar, .header-actions {
     display: none !important;
   }
   

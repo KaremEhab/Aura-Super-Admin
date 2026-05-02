@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutDashboard, Dumbbell, User, Users, DollarSign, Server, BookOpen, HelpCircle, LogOut } from 'lucide-react';
+import { LayoutDashboard, Dumbbell, User, Users, DollarSign, Server, BookOpen, HelpCircle, LogOut, X } from 'lucide-react';
 import './Sidebar.css';
 import auraLogo from '../../assets/Aura.svg';
 
@@ -18,8 +18,10 @@ export function Sidebar({ isOpen, onClose }) {
   return (
     <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-logo">
-        <img src={auraLogo} alt="Aura Fit Logo" />
-        <span className="logo-text" style={{ color: 'var(--primary)' }}>AURA.FIT.</span>
+        <div className="logo-brand">
+          <img src={auraLogo} alt="Aura Fit Logo" />
+          <span className="logo-text" style={{ color: 'var(--primary)' }}>AURA.FIT.</span>
+        </div>
       </div>
 
       <nav className="sidebar-nav">
@@ -51,7 +53,7 @@ export function Sidebar({ isOpen, onClose }) {
         </div>
 
         <button className="sign-out">
-          <LogOut size={18} />
+          <LogOut size={16} />
           <span>SIGN OUT</span>
         </button>
       </div>
