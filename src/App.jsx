@@ -4,6 +4,7 @@ import { Dashboard } from './pages/Dashboard/Dashboard';
 import { AccountSettings } from './pages/Settings/AccountSettings';
 
 import { Support } from './pages/Support/Support';
+import { Library } from './pages/Library/Library';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('dashboard');
@@ -51,6 +52,8 @@ function App() {
               );
             case 'support':
               return <Support />;
+            case 'library':
+              return <Library />;
             default:
               return <Dashboard />;
           }
