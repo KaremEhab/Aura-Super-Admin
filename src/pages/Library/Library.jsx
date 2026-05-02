@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Search, Filter, Play, Clock, HardDrive, Zap, AlertCircle, MoreVertical, LayoutGrid, List, Upload, Plus, Eye, User } from 'lucide-react';
 import './Library.css';
 
 export function Library() {
+  const [viewType, setViewType] = useState('grid');
   const stats = [
     { label: 'ACTIVE STREAMS', value: '1,242', trend: '99.5%', status: 'success' },
     { label: 'STORAGE USED', value: '4.2 TB', trend: 'of 10 TB', status: 'success' },
@@ -110,12 +111,22 @@ export function Library() {
           </div>
         </div>
         <div className="view-toggles">
-          <button className="toggle-btn active"><LayoutGrid size={18} /></button>
-          <button className="toggle-btn"><List size={18} /></button>
+          <button 
+            className={`toggle-btn ${viewType === 'grid' ? 'active' : ''}`}
+            onClick={() => setViewType('grid')}
+          >
+            <LayoutGrid size={18} />
+          </button>
+          <button 
+            className={`toggle-btn ${viewType === 'list' ? 'active' : ''}`}
+            onClick={() => setViewType('list')}
+          >
+            <List size={18} />
+          </button>
         </div>
       </div>
 
-      <div className="video-grid">
+      <div className={`video-grid ${viewType}`}>
         {videos.map((video, index) => (
           <div key={index} className={`video-card animate-slide-up delay-${index + 1}`}>
             <div className="card-status-header">
