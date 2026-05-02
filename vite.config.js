@@ -18,7 +18,8 @@ export default defineConfig(({ mode }) => {
             return code
               .replace(/__BP_MOBILE__/g, env.VITE_BP_MOBILE || '768px')
               .replace(/__BP_IPAD__/g, env.VITE_BP_IPAD || '1024px')
-              .replace(/__BP_LANDSCAPE__/g, env.VITE_BP_LANDSCAPE || '1440px');
+              .replace(/__BP_LANDSCAPE__/g, env.VITE_BP_LANDSCAPE || '1440px')
+              .replace(/__FONT_FAMILY__/g, env.VITE_FONT_FAMILY || "'Inter', sans-serif");
           }
         }
       }

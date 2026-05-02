@@ -30,7 +30,7 @@
 
 .main-wrapper {
   flex-grow: 1;
-  margin-left: 280px; /* Sidebar width */
+  margin-left: 250px; /* Sidebar width */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -39,7 +39,7 @@
 
 .main-content {
   flex-grow: 1;
-  padding: 0 48px 48px 48px;
+  padding: 0 32px 32px 32px;
 }
 
 @media (max-width: __BP_IPAD__) {

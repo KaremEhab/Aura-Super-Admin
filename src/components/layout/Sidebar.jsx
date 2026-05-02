@@ -1,10 +1,10 @@
 import React from 'react';
-import { LayoutDashboard, Dumbbell, User, Users, DollarSign, Server, BookOpen, HelpCircle, LogOut, X, ChevronRight } from 'lucide-react';
+import { Home, Dumbbell, User, Users, DollarSign, Server, BookOpen, HelpCircle, LogOut, X, ChevronRight } from 'lucide-react';
 import './Sidebar.css';
 import auraLogo from '../../assets/Aura.svg';
 
 const navItems = [
-  { icon: LayoutDashboard, label: 'DASHBOARD', active: true },
+  { icon: Home, label: 'DASHBOARD', active: true },
   { icon: Dumbbell, label: 'GYMS' },
   { icon: User, label: 'PERSONAL TRAINER' },
   { icon: Users, label: 'TRAINEES' },
