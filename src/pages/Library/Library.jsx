@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { Search, Filter, Play, Clock, HardDrive, Zap, AlertCircle, MoreVertical, LayoutGrid, List, Upload, Plus, Eye, User } from 'lucide-react';
+import { Search, Filter, Play, Clock, HardDrive, Zap, AlertCircle, MoreVertical, LayoutGrid, List, Upload, Plus, Eye, User, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
 import './Library.css';
 
 export function Library() {
   const [viewType, setViewType] = useState('grid');
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [activeFilters, setActiveFilters] = useState([]);
+
   const stats = [
     { label: 'ACTIVE STREAMS', value: '1,242', trend: '99.5%', status: 'success' },
     { label: 'STORAGE USED', value: '4.2 TB', trend: 'of 10 TB', status: 'success' },
@@ -54,6 +57,52 @@ export function Library() {
       progress: 85,
       uploader: 'Admin System',
       thumbnail: 'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=400&auto=format&fit=crop'
+    },
+    {
+      id: 'GP-2210',
+      title: 'Barbell Squat Form',
+      duration: '01:15',
+      tags: ['LEGS', 'COMPOUND'],
+      views: '15.2k',
+      uploader: 'Coach Alex',
+      gymViews: '10.1k',
+      ptViews: '5.1k',
+      status: 'LIVE',
+      thumbnail: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&auto=format&fit=crop'
+    },
+    {
+      id: 'GP-1105',
+      title: 'Pull-up Technique',
+      duration: '00:55',
+      tags: ['BACK', 'BODYWEIGHT'],
+      views: '6.4k',
+      uploader: 'Gym Manager',
+      gymViews: '4.2k',
+      ptViews: '2.2k',
+      status: 'LIVE',
+      thumbnail: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&auto=format&fit=crop'
+    },
+    {
+      id: 'GP-9932',
+      title: 'Cable Flys Setup',
+      tags: ['CHEST', 'ISOLATION'],
+      status: 'ERROR',
+      errorMsg: 'FILE CORRUPTED',
+      uploader: 'Coach Sarah',
+      thumbnail: 'https://images.unsplash.com/photo-1541534741688-6078c6bc35e5?w=400&auto=format&fit=crop'
+    },
+    {
+      id: 'GP-4421',
+      title: 'Plank Hold Guide',
+      duration: '02:00',
+      tags: ['CORE', 'STABILITY'],
+      views: '1.2k',
+      uploader: 'Kareem Ehab',
+      gymViews: '0.8k',
+      ptViews: '0.4k',
+      status: 'UPLOADING',
+      progress: 45,
+      thumbnail: 'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=400&auto=format&fit=crop'
     }
   ];
 
@@ -61,8 +110,8 @@ export function Library() {
     <div className="library-page animate-fade-in">
       <div className="library-header">
         <div className="dashboard-header-text" style={{ marginTop: '24px' }}>
-        <h1 className="page-title">Aura Library</h1>
-        <p className="page-subtitle">Managing 1,248 high-performance exercise assets across the global network.</p>
+          <h1 className="page-title">Aura Library</h1>
+          <p className="page-subtitle">Managing 1,248 high-performance exercise assets across the global network.</p>
         </div>
         <div className="header-actions">
           <button className="btn-secondary">
@@ -91,38 +140,120 @@ export function Library() {
         ))}
       </div>
 
-      <div className="library-filter-bar card animate-slide-up delay-4">
-        <div className="filters-left">
-          <div className="filter-item">
-            <span>Filter By:</span>
-            <select>
-              <option>Muscle Group</option>
-            </select>
+      <div className="library-filter-hub card animate-slide-up delay-4">
+  <div className="hub-top-row">
+    {/* Wrap search to handle width on mobile */}
+    <div className="hub-search-container">
+      <Search size={20} className="hub-search-icon" />
+      <input type="text" placeholder="Search assets..." />
+      {/* Hide KBD on mobile */}
+      <div className="hub-kbd hidden sm:flex">
+        <kbd>⌘</kbd><kbd>K</kbd>
+      </div>
+    </div>
+    
+    <div className="hub-actions">
+      <button 
+        className={`hub-filter-trigger ${isFilterOpen ? 'active' : ''}`}
+        onClick={() => setIsFilterOpen(true)}
+      >
+        <Filter size={18} />
+        <span className="hidden xs:inline">Filters</span>
+        {activeFilters.length > 0 && <span className="hub-badge">{activeFilters.length}</span>}
+      </button>
+      
+      {/* Hide view toggles on very small screens to save space */}
+      <div className="hub-divider hidden xs:block" />
+      
+      <div className="hub-view-toggles hidden xs:flex">
+        <button className={`hub-toggle-btn ${viewType === 'grid' ? 'active' : ''}`} onClick={() => setViewType('grid')}>
+          <LayoutGrid size={18} />
+        </button>
+        <button className={`hub-toggle-btn ${viewType === 'list' ? 'active' : ''}`} onClick={() => setViewType('list')}>
+          <List size={18} />
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div className="hub-bottom-row">
+    <div className="quick-filter-scroll">
+      <button className="quick-chip active">All Assets</button>
+      {['Chest', 'Back', 'Legs', 'Shoulders', 'Arms', 'Core', 'Cardio'].map(muscle => (
+        <button 
+          key={muscle} 
+          className={`quick-chip ${activeFilters.includes(muscle) ? 'selected' : ''}`}
+          onClick={() => setActiveFilters(prev => prev.includes(muscle) ? prev.filter(m => m !== muscle) : [...prev, muscle])}
+        >
+          {muscle}
+        </button>
+      ))}
+    </div>
+  </div>
+</div>
+
+      {/* Filter Drawer */}
+      <div className={`filter-drawer-overlay ${isFilterOpen ? 'open' : ''}`} onClick={() => setIsFilterOpen(false)}>
+        <div className="filter-drawer" onClick={e => e.stopPropagation()}>
+          <div className="drawer-header">
+            <h3>Advanced Filters</h3>
+            <button className="close-drawer" onClick={() => setIsFilterOpen(false)}>
+              <Plus size={24} style={{ transform: 'rotate(45deg)' }} />
+            </button>
           </div>
-          <div className="filter-item">
-            <select>
-              <option>Difficulty</option>
-            </select>
+          
+          <div className="drawer-content">
+            <div className="filter-group">
+              <label>MUSCLE GROUP</label>
+              <div className="filter-options-grid">
+                {['Chest', 'Back', 'Legs', 'Shoulders', 'Arms', 'Core'].map(muscle => (
+                  <button 
+                    key={muscle} 
+                    className={`option-btn ${activeFilters.includes(muscle) ? 'selected' : ''}`}
+                    onClick={() => setActiveFilters(prev => prev.includes(muscle) ? prev.filter(m => m !== muscle) : [...prev, muscle])}
+                  >
+                    {muscle}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="filter-group">
+              <label>DIFFICULTY</label>
+              <div className="filter-options-grid">
+                {['Beginner', 'Intermediate', 'Advanced', 'Elite'].map(level => (
+                  <button 
+                    key={level} 
+                    className={`option-btn ${activeFilters.includes(level) ? 'selected' : ''}`}
+                    onClick={() => setActiveFilters(prev => prev.includes(level) ? prev.filter(l => l !== level) : [...prev, level])}
+                  >
+                    {level}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="filter-group">
+              <label>STATUS</label>
+              <div className="filter-options-stack">
+                {['Live', 'Uploading', 'Error'].map(status => (
+                  <label key={status} className="checkbox-filter">
+                    <input 
+                      type="checkbox" 
+                      checked={activeFilters.includes(status)}
+                      onChange={() => setActiveFilters(prev => prev.includes(status) ? prev.filter(s => s !== status) : [...prev, status])}
+                    />
+                    <span>{status}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="filter-item">
-            <select>
-              <option>Status</option>
-            </select>
+
+          <div className="drawer-footer">
+            <button className="btn-reset" onClick={() => setActiveFilters([])}>Reset All</button>
+            <button className="btn-apply" onClick={() => setIsFilterOpen(false)}>Apply Filters</button>
           </div>
-        </div>
-        <div className="view-toggles">
-          <button 
-            className={`toggle-btn ${viewType === 'grid' ? 'active' : ''}`}
-            onClick={() => setViewType('grid')}
-          >
-            <LayoutGrid size={18} />
-          </button>
-          <button 
-            className={`toggle-btn ${viewType === 'list' ? 'active' : ''}`}
-            onClick={() => setViewType('list')}
-          >
-            <List size={18} />
-          </button>
         </div>
       </div>
 
@@ -184,29 +315,18 @@ export function Library() {
             </div>
           </div>
         ))}
-        {/* Repeat some for the grid feel */}
-        {[...Array(4)].map((_, i) => (
-           <div key={`extra-${i}`} className={`video-card animate-slide-up delay-${i + 1}`}>
-              <div className="thumbnail-placeholder"></div>
-              <div className="video-info">
-                <div className="skeleton title-skeleton"></div>
-                <div className="skeleton tag-skeleton"></div>
-                <div className="skeleton footer-skeleton"></div>
-              </div>
-           </div>
-        ))}
       </div>
 
       <div className="library-pagination animate-fade-in delay-5">
         <span>Showing 1 to 8 of 1,248 videos</span>
         <div className="pagination-controls">
-          <button className="page-nav">{"<"}</button>
+          <button className="page-nav"><ChevronLeft size={18} /></button>
           <button className="page-btn active">1</button>
           <button className="page-btn">2</button>
           <button className="page-btn">3</button>
           <span>...</span>
           <button className="page-btn">52</button>
-          <button className="page-nav">{">"}</button>
+          <button className="page-nav"><ChevronRight size={18} /></button>
         </div>
       </div>
     </div>
