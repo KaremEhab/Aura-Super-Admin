@@ -323,7 +323,7 @@
   }
 
   .directory-table {
-    min-width: 850px; /* Force scroll */
+    min-width: 700px; /* Force scroll */
   }
 
   .directory-table td, .directory-table th {
