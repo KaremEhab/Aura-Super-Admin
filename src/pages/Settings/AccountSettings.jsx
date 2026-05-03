@@ -260,6 +260,91 @@ export function AccountSettings({ branding, onBrandingChange }) {
                   </div>
                 </div>
               </div>
+
+              <h4 className="sub-section-title mt-6">TRAINEE PLANS — AURA DIRECT</h4>
+              <div className="plan-edit-list">
+                <div className="plan-edit-row">
+                  <div className="plan-main-fields">
+                    <input type="text" defaultValue="Trial" placeholder="Plan Name" />
+                    <input type="text" defaultValue="14-day free trial, limited features" placeholder="Description" />
+                  </div>
+                  <div className="plan-price-field">
+                    <span>$</span>
+                    <input type="number" defaultValue="0" />
+                    <span>/14d</span>
+                  </div>
+                </div>
+                <div className="plan-edit-row">
+                  <div className="plan-main-fields">
+                    <input type="text" defaultValue="Monthly" placeholder="Plan Name" />
+                    <input type="text" defaultValue="Full app access, workout plans & tracking" placeholder="Description" />
+                  </div>
+                  <div className="plan-price-field">
+                    <span>$</span>
+                    <input type="number" defaultValue="9.99" />
+                    <span>/mo</span>
+                  </div>
+                </div>
+                <div className="plan-edit-row">
+                  <div className="plan-main-fields">
+                    <input type="text" defaultValue="6-Month" placeholder="Plan Name" />
+                    <input type="text" defaultValue="All features + gym discovery & PT matching" placeholder="Description" />
+                  </div>
+                  <div className="plan-price-field">
+                    <span>$</span>
+                    <input type="number" defaultValue="49.99" />
+                    <span>/6mo</span>
+                  </div>
+                </div>
+                <div className="plan-edit-row">
+                  <div className="plan-main-fields">
+                    <input type="text" defaultValue="Annual Elite" placeholder="Plan Name" />
+                    <input type="text" defaultValue="Priority support, analytics & exclusive content" placeholder="Description" />
+                  </div>
+                  <div className="plan-price-field">
+                    <span>$</span>
+                    <input type="number" defaultValue="89.99" />
+                    <span>/yr</span>
+                  </div>
+                </div>
+              </div>
+
+              <h4 className="sub-section-title mt-6">TRAINEE PLANS — VIA GYM</h4>
+              <div className="plan-edit-list">
+                <div className="plan-edit-row">
+                  <div className="plan-main-fields">
+                    <input type="text" defaultValue="Standard Monthly" placeholder="Plan Name" />
+                    <input type="text" defaultValue="Gym access, class bookings & basic tracking" placeholder="Description" />
+                  </div>
+                  <div className="plan-price-field">
+                    <span>$</span>
+                    <input type="number" defaultValue="29.99" />
+                    <span>/mo</span>
+                  </div>
+                </div>
+                <div className="plan-edit-row">
+                  <div className="plan-main-fields">
+                    <input type="text" defaultValue="Elite 6-Month" placeholder="Plan Name" />
+                    <input type="text" defaultValue="Full gym + PT sessions + nutrition plans" placeholder="Description" />
+                  </div>
+                  <div className="plan-price-field">
+                    <span>$</span>
+                    <input type="number" defaultValue="149.99" />
+                    <span>/6mo</span>
+                  </div>
+                </div>
+                <div className="plan-edit-row">
+                  <div className="plan-main-fields">
+                    <input type="text" defaultValue="Elite 12-Month" placeholder="Plan Name" />
+                    <input type="text" defaultValue="All-inclusive, priority booking & 1-on-1 coaching" placeholder="Description" />
+                  </div>
+                  <div className="plan-price-field">
+                    <span>$</span>
+                    <input type="number" defaultValue="249.99" />
+                    <span>/yr</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 

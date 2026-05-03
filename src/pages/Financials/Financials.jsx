@@ -7,21 +7,22 @@ export function Financials() {
   const [period, setPeriod] = useState('This Month');
 
   const revenueStreams = [
-    { source: 'Gym Subscriptions', amount: 1842000, change: +12.4, percentage: 43.8 },
-    { source: 'PT Session Fees', amount: 924500, change: +8.1, percentage: 22.0 },
-    { source: 'App Premium Plans', amount: 612300, change: +24.6, percentage: 14.6 },
-    { source: 'Equipment Licensing', amount: 418200, change: -2.3, percentage: 9.9 },
-    { source: 'Merchandise & Merch', amount: 248700, change: +5.8, percentage: 5.9 },
-    { source: 'Events & Workshops', amount: 160100, change: +31.2, percentage: 3.8 },
+    { source: 'Gym Subscriptions', amount: 1842000, change: +12.4, percentage: 36.2 },
+    { source: 'Aura Direct Subscriptions', amount: 1024800, change: +42.8, percentage: 20.1 },
+    { source: 'PT Session Fees', amount: 924500, change: +8.1, percentage: 18.2 },
+    { source: 'App Premium Plans', amount: 612300, change: +24.6, percentage: 12.0 },
+    { source: 'Equipment Licensing', amount: 418200, change: -2.3, percentage: 8.2 },
+    { source: 'Merchandise & Events', amount: 268800, change: +9.4, percentage: 5.3 },
   ];
 
   const transactions = [
+    { id: 'TXN-88422', type: 'DIRECT', entity: 'Aura Direct — Weekly Batch (1,240 subs)', amount: 61400.00, status: 'COMPLETED', date: 'May 03, 2024', method: 'In-App Purchase' },
     { id: 'TXN-88421', type: 'PAYOUT', entity: 'Apex Performance Hub', amount: 42800.00, status: 'COMPLETED', date: 'May 03, 2024', method: 'Bank Transfer' },
     { id: 'TXN-88420', type: 'REVENUE', entity: 'Elena Rodriguez (PT)', amount: 3200.00, status: 'COMPLETED', date: 'May 03, 2024', method: 'Stripe' },
     { id: 'TXN-88419', type: 'REFUND', entity: 'Omar Hassan', amount: -180.00, status: 'PROCESSING', date: 'May 02, 2024', method: 'Stripe' },
     { id: 'TXN-88418', type: 'PAYOUT', entity: 'Iron Sanctuary NYC', amount: 38400.00, status: 'COMPLETED', date: 'May 02, 2024', method: 'Bank Transfer' },
-    { id: 'TXN-88417', type: 'REVENUE', entity: 'App Premium — Batch', amount: 124600.00, status: 'COMPLETED', date: 'May 01, 2024', method: 'In-App Purchase' },
-    { id: 'TXN-88416', type: 'REFUND', entity: 'Lina Morales', amount: -95.00, status: 'COMPLETED', date: 'May 01, 2024', method: 'Stripe' },
+    { id: 'TXN-88417', type: 'DIRECT', entity: 'Aura Direct — New Signups (86)', amount: 4290.00, status: 'COMPLETED', date: 'May 01, 2024', method: 'Stripe' },
+    { id: 'TXN-88416', type: 'REVENUE', entity: 'App Premium — Batch', amount: 124600.00, status: 'COMPLETED', date: 'May 01, 2024', method: 'In-App Purchase' },
   ];
 
   const payoutSchedule = [
@@ -36,6 +37,7 @@ export function Financials() {
       case 'REVENUE': return 'type-revenue';
       case 'PAYOUT': return 'type-payout';
       case 'REFUND': return 'type-refund';
+      case 'DIRECT': return 'type-direct';
       default: return '';
     }
   };
@@ -91,12 +93,12 @@ export function Financials() {
         </div>
 
         <div className="fin-kpi-card card animate-slide-up delay-4">
-          <div className="stat-icon-wrap purple"><Percent size={20} /></div>
+          <div className="stat-icon-wrap purple"><Users size={20} /></div>
           <div className="stat-info">
-            <span className="stat-label">Platform Fee</span>
-            <span className="stat-value">18.5%</span>
+            <span className="stat-label">Direct Sub Revenue</span>
+            <span className="stat-value">$1.02M</span>
           </div>
-          <div className="stat-trend neutral">Flat rate</div>
+          <div className="stat-trend positive"><ArrowUpRight size={12} /> +42.8% growth</div>
         </div>
       </div>
 
