@@ -559,7 +559,7 @@ input:checked + .slider:before {
 
 /* Firefox */
 .plan-price-field input[type=number] {
-  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 /* Color Picker UI */

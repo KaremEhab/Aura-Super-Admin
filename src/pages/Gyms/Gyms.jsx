@@ -1,0 +1,196 @@
+import React, { useState } from 'react';
+import { Search, Filter, LayoutGrid, List, ChevronDown, Power, ExternalLink, Globe, MapPin, Activity, Shield, Users, ArrowUpRight } from 'lucide-react';
+import './Gyms.css';
+
+export function Gyms() {
+  const [viewType, setViewType] = useState('grid');
+  
+  const chains = [
+    { name: 'Titanium Fitness', branches: 12, members: '15.4k', growth: '+8.2%' },
+    { name: 'Iron Forge', branches: 8, members: '9.2k', growth: '+5.4%' },
+    { name: 'Zenith Athletics', branches: 7, members: '11.8k', growth: '+12.1%' }
+  ];
+
+  const gymData = [
+    { id: 'GP-7721', name: 'Apex Performance Hub', tier: 'ELITE PERFORMANCE', owner: 'Marcus Sterling', location: 'Los Angeles, CA', status: 'Active', revenue: '$184,200', active: true },
+    { id: 'GP-1092', name: 'Iron Sanctuary NYC', tier: 'STANDARD KINETIC', owner: 'Elena Rodriguez', location: 'New York, NY', status: 'Pending', revenue: '$0', active: true },
+    { id: 'GP-3304', name: 'Velocity Lab', tier: 'ELITE PERFORMANCE', owner: 'Sarah Jenkins', location: 'Austin, TX', status: 'Suspended', revenue: '$64,500', active: false }
+  ];
+
+  return (
+    <div className="gyms-page animate-fade-in">
+      <div className="gyms-header">
+        <h1 className="page-title">Aura Gyms</h1>
+        <p className="page-subtitle">Manage and monitor the global network of AURA.FIT high-performance facilities.</p>
+      </div>
+
+      <div className="gyms-stats-grid">
+        <div className="health-card animate-slide-up delay-1">
+          <div className="card-label-top">
+            <span className="label-text">NETWORK HEALTH</span>
+            <span className="live-badge">LIVE MONITORING</span>
+          </div>
+          <h2 className="health-title">Active Growth Phase</h2>
+          <div className="health-stats-row">
+            <div className="h-stat-item">
+              <span className="h-val">142</span>
+              <span className="h-label">Total Facilities</span>
+            </div>
+            <div className="h-stat-item">
+              <span className="h-val">89%</span>
+              <span className="h-label">Peak Utilization</span>
+            </div>
+            <div className="h-stat-item">
+              <span className="h-val">$4.2M</span>
+              <span className="h-label">Monthly Recurring</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="tier-card animate-slide-up delay-2">
+          <span className="label-text">TIER DISTRIBUTION</span>
+          <div className="tier-item">
+            <div className="tier-info">
+              <span className="tier-name">Elite Performance</span>
+              <span className="tier-count">42</span>
+            </div>
+            <div className="tier-progress">
+              <div className="progress-fill elite" style={{ width: '42%' }}></div>
+            </div>
+          </div>
+          <div className="tier-item">
+            <div className="tier-info">
+              <span className="tier-name">Standard Kinetic</span>
+              <span className="tier-count">100</span>
+            </div>
+            <div className="tier-progress">
+              <div className="progress-fill kinetic" style={{ width: '70%' }}></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="gyms-analytics-row">
+        <div className="analytics-card animate-slide-up delay-3">
+          <div className="card-header-flex">
+            <h3 className="card-title-md">Top 5 Gym Chains by Scale</h3>
+            <span className="full-report-link">Full Report <ExternalLink size={14} /></span>
+          </div>
+          <table className="chains-table">
+            <thead>
+              <tr>
+                <th>GYM CHAIN</th>
+                <th>BRANCHES</th>
+                <th>MEMBERS</th>
+                <th>GROWTH</th>
+              </tr>
+            </thead>
+            <tbody>
+              {chains.map((chain, i) => (
+                <tr key={i}>
+                  <td>{chain.name}</td>
+                  <td>{chain.branches}</td>
+                  <td>{chain.members}</td>
+                  <td className="growth-positive">{chain.growth}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="highlights-card animate-slide-up delay-4">
+          <div className="highlight-item">
+            <span className="highlight-label">Biggest Gym by Footprint</span>
+            <span className="highlight-val">Titanium Grand Central</span>
+            <span className="highlight-sub">45,000 sq ft • Chicago, IL</span>
+          </div>
+          <div className="highlight-item">
+            <span className="highlight-label">Newest Facility Launched</span>
+            <span className="highlight-val">Pulse Fitness Arena</span>
+            <span className="highlight-sub">Opening June 2024 • Miami, FL</span>
+          </div>
+          <div className="highlight-item">
+            <span className="highlight-label">Most Members Enrolled</span>
+            <span className="highlight-val">Ironclad Strength Center</span>
+            <span className="highlight-sub">3,200 Active Members • Dallas, TX</span>
+          </div>
+          <div className="highlight-item">
+            <span className="highlight-label">Most Diverse Class Offerings</span>
+            <span className="highlight-val">Fusion Wellness Club</span>
+            <span className="highlight-sub">50+ Classes Weekly • Seattle, WA</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="gyms-filter-bar card animate-slide-up delay-5">
+        <div className="filter-controls">
+          <span className="filter-label">Filter By:</span>
+          <button className="filter-select-mini">All Status <ChevronDown size={14} /></button>
+          <button className="filter-select-mini">All Regions <ChevronDown size={14} /></button>
+          <button className="filter-select-mini">All Tiers <ChevronDown size={14} /></button>
+        </div>
+        <div className="hub-view-toggles">
+          <button className={`hub-toggle-btn ${viewType === 'grid' ? 'active' : ''}`} onClick={() => setViewType('grid')}>
+            <LayoutGrid size={18} />
+          </button>
+          <button className={`hub-toggle-btn ${viewType === 'list' ? 'active' : ''}`} onClick={() => setViewType('list')}>
+            <List size={18} />
+          </button>
+        </div>
+      </div>
+
+      <div className="gyms-table-container animate-slide-up delay-6">
+        <table className="gym-main-table">
+          <thead>
+            <tr>
+              <th>GYM ID</th>
+              <th>NAME & TIER</th>
+              <th>OWNER</th>
+              <th>LOCATION</th>
+              <th>STATUS</th>
+              <th>CURRENT REVENUE</th>
+              <th>KILL SWITCH</th>
+            </tr>
+          </thead>
+          <tbody>
+            {gymData.map((gym, i) => (
+              <tr key={i} className={`gym-row ${gym.status.toLowerCase()}`}>
+                <td className="gym-id-cell">{gym.id}</td>
+                <td className="name-tier-cell">
+                  <span className="gym-name-val">{gym.name}</span>
+                  <span className={`gym-tier-tag ${gym.tier.includes('ELITE') ? 'elite' : 'kinetic'}`}>{gym.tier}</span>
+                </td>
+                <td>{gym.owner}</td>
+                <td>{gym.location}</td>
+                <td>
+                  <span className={`status-chip ${gym.status.toLowerCase()}`}>
+                    <div className="dot" /> {gym.status}
+                  </span>
+                </td>
+                <td>{gym.revenue}</td>
+                <td>
+                  <button className={`kill-switch-btn ${gym.active ? 'active' : ''}`}>
+                    <Power size={16} />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        
+        <div className="table-footer-pagination">
+          <span className="results-count">Showing 1 to 8 of 1,248 gyms</span>
+          <div className="pagination-controls">
+            <button className="page-nav-btn">&lt;</button>
+            <button className="page-num-btn active">1</button>
+            <button className="page-num-btn">2</button>
+            <button className="page-num-btn">3</button>
+            <span className="page-dots">...</span>
+            <button className="page-num-btn">52</button>
+            <button className="page-nav-btn">&gt;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
