@@ -110,8 +110,8 @@ export function Library() {
     <div className="library-page animate-fade-in">
       <div className="library-header">
         <div className="dashboard-header-text" style={{ marginTop: '24px' }}>
-          <h1 className="page-title">Aura Library</h1>
-          <p className="page-subtitle">Managing 1,248 high-performance exercise assets across the global network.</p>
+        <h1 className="page-title">Aura Library</h1>
+        <p className="page-subtitle">Managing 1,248 high-performance exercise assets across the global network.</p>
         </div>
         <div className="header-actions">
           <button className="btn-secondary">
@@ -140,57 +140,74 @@ export function Library() {
         ))}
       </div>
 
-      <div className="library-filter-hub card animate-slide-up delay-4">
-  <div className="hub-top-row">
-    {/* Wrap search to handle width on mobile */}
-    <div className="hub-search-container">
-      <Search size={20} className="hub-search-icon" />
-      <input type="text" placeholder="Search assets..." />
-      {/* Hide KBD on mobile */}
-      <div className="hub-kbd hidden sm:flex">
-        <kbd>⌘</kbd><kbd>K</kbd>
-      </div>
+      
+
+      <div className="library-filter-hub card bg-sidebar border border-stroke rounded-2xl p-4 animate-slide-up delay-4">
+  <div className="hub-top-row flex flex-col lg:flex-row items-stretch lg:items-center gap-4">
+    {/* Search bar expands to full width on mobile */}
+    <div className="hub-search-container relative flex-1">
+      <Search size={20} className="absolute left-3 top-1/2 -translate-y-1/2 text-subtitle" />
+      <input 
+        type="text" 
+        placeholder="Search assets..." 
+        className="w-full bg-background border border-stroke rounded-xl py-3 pl-10 pr-4 focus:border-primary outline-none transition-all"
+      />
     </div>
     
-    <div className="hub-actions">
+    <div className="hub-actions flex items-center justify-between lg:justify-end gap-3">
       <button 
-        className={`hub-filter-trigger ${isFilterOpen ? 'active' : ''}`}
+        className={`flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-stroke transition-all flex-1 lg:flex-none ${isFilterOpen ? 'bg-primary text-white border-primary' : 'bg-background text-title hover:border-primary'}`}
         onClick={() => setIsFilterOpen(true)}
       >
         <Filter size={18} />
-        <span className="hidden xs:inline">Filters</span>
-        {activeFilters.length > 0 && <span className="hub-badge">{activeFilters.length}</span>}
+        <span className="xs:inline">Filters</span>
+        {activeFilters.length > 0 && (
+          <span className="bg-primary text-white text-[10px] px-1.5 rounded-full flex items-center justify-center min-w-[18px] h-[18px]">
+            {activeFilters.length}
+          </span>
+        )}
       </button>
       
-      {/* Hide view toggles on very small screens to save space */}
-      <div className="hub-divider hidden xs:block" />
+      {/* View toggles remain visible on most mobile screens but hide on very narrow ones */}
+      <div className="hub-divider h-8 w-px bg-stroke hidden xs:block" />
       
-      <div className="hub-view-toggles hidden xs:flex">
-        <button className={`hub-toggle-btn ${viewType === 'grid' ? 'active' : ''}`} onClick={() => setViewType('grid')}>
+      <div className="hub-view-toggles flex bg-background p-1 rounded-xl border border-stroke shrink-0">
+        <button 
+          className={`p-2 rounded-lg transition-all ${viewType === 'grid' ? 'bg-sidebar text-primary shadow-sm' : 'text-subtitle'}`} 
+          onClick={() => setViewType('grid')}
+        >
           <LayoutGrid size={18} />
         </button>
-        <button className={`hub-toggle-btn ${viewType === 'list' ? 'active' : ''}`} onClick={() => setViewType('list')}>
+        <button 
+          className={`p-2 rounded-lg transition-all ${viewType === 'list' ? 'bg-sidebar text-primary shadow-sm' : 'text-subtitle'}`} 
+          onClick={() => setViewType('list')}
+        >
           <List size={18} />
         </button>
       </div>
     </div>
   </div>
-  
-  <div className="hub-bottom-row">
-    <div className="quick-filter-scroll">
-      <button className="quick-chip active">All Assets</button>
-      {['Chest', 'Back', 'Legs', 'Shoulders', 'Arms', 'Core', 'Cardio'].map(muscle => (
-        <button 
-          key={muscle} 
-          className={`quick-chip ${activeFilters.includes(muscle) ? 'selected' : ''}`}
-          onClick={() => setActiveFilters(prev => prev.includes(muscle) ? prev.filter(m => m !== muscle) : [...prev, muscle])}
-        >
-          {muscle}
-        </button>
-      ))}
-    </div>
-  </div>
-</div>
+
+        {/* <div className="hub-bottom-row mt-4 pt-4 border-t border-stroke">
+          <div className="quick-filter-scroll no-scrollbar">
+            <button 
+              className={`quick-chip ${activeFilters.length === 0 ? 'active' : ''}`}
+              onClick={() => setActiveFilters([])}
+            >
+              All Assets
+            </button>
+            {['Chest', 'Back', 'Legs', 'Shoulders', 'Arms', 'Core', 'Cardio'].map(muscle => (
+              <button 
+                key={muscle} 
+                className={`quick-chip ${activeFilters.includes(muscle) ? 'selected' : ''}`}
+                onClick={() => setActiveFilters(prev => prev.includes(muscle) ? prev.filter(m => m !== muscle) : [...prev, muscle])}
+              >
+                {muscle}
+              </button>
+            ))}
+          </div>
+        </div> */}
+      </div>
 
       {/* Filter Drawer */}
       <div className={`filter-drawer-overlay ${isFilterOpen ? 'open' : ''}`} onClick={() => setIsFilterOpen(false)}>
@@ -270,16 +287,14 @@ export function Library() {
             </div>
 
             <div className="thumbnail-wrapper square-thumb">
-              {video.status === 'ERROR' ? (
-                <div className="error-icon-container">
-                  <AlertCircle size={32} className="text-alert" />
-                  <span className="error-msg-mini">{video.errorMsg}</span>
+              <img src={video.thumbnail} alt={video.title} className="thumbnail" />
+              {video.duration && <span className="duration">{video.duration}</span>}
+              
+              {video.status === 'ERROR' && (
+                <div className="error-overlay">
+                  <AlertCircle size={24} />
+                  <span>{video.errorMsg}</span>
                 </div>
-              ) : (
-                <>
-                  <img src={video.thumbnail} alt={video.title} className="thumbnail" />
-                  {video.duration && <span className="duration">{video.duration}</span>}
-                </>
               )}
             </div>
 

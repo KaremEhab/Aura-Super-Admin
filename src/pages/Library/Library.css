@@ -287,13 +287,20 @@
 .quick-filter-scroll {
   display: flex;
   gap: 8px;
-  overflow-x: auto;
-  scrollbar-width: none;
+  overflow-x: auto; /* Enables horizontal scrolling */
+  white-space: nowrap; /* Prevents chips from wrapping to a second line */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+  width: 100%;
 }
 
-.quick-filter-scroll::-webkit-scrollbar { display: none; }
+/* Hides scrollbar in Chrome, Safari, and Edge */
+.quick-filter-scroll::-webkit-scrollbar {
+  display: none;
+}
 
 .quick-chip {
+  flex: 0 0 auto; /* CRITICAL: Prevents chips from shrinking to fit the screen */
   background: transparent;
   border: 1px solid transparent;
   color: var(--subtitle);
@@ -301,20 +308,20 @@
   border-radius: 6px;
   font-size: 0.85rem;
   font-weight: 600;
-  white-space: nowrap;
+  white-space: nowrap; /* Ensures text stays on one line */
   cursor: pointer;
   transition: all 0.2s;
-}
-
-.quick-chip:hover {
-  background: var(--background);
-  color: var(--title);
 }
 
 .quick-chip.active {
   background: var(--background);
   color: var(--primary);
   font-weight: 700;
+}
+
+.quick-chip:hover {
+  background: var(--background);
+  color: var(--title);
 }
 
 .quick-chip.selected {
@@ -769,27 +776,30 @@
 
 .video-grid.list .video-card {
   flex-direction: row;
-  height: 120px;
+  height: 140px;
   align-items: stretch;
+  background: var(--sidebar);
 }
 
 .video-grid.list .card-status-header {
   flex-direction: column;
-  padding: 12px;
-  width: 100px;
+  padding: 16px;
+  width: 120px;
   border-bottom: none;
   border-right: 1px solid var(--stroke);
   justify-content: center;
   text-align: center;
   gap: 8px;
+  background: rgba(var(--primary-rgb), 0.02);
 }
 
 .video-grid.list .status-group {
   flex-direction: column;
+  align-items: center;
 }
 
 .video-grid.list .thumbnail-wrapper.square-thumb {
-  width: 180px;
+  width: 220px;
   height: 100%;
   aspect-ratio: auto;
 }
@@ -799,65 +809,114 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0 24px;
+  padding: 0 32px;
 }
 
 .video-grid.list .info-main {
   flex: 1;
+  text-align: left;
+}
+
+.video-grid.list .video-title-sm {
+  font-size: 1rem;
+  margin-bottom: 4px;
 }
 
 .video-grid.list .video-stats-row {
-  flex: 1;
+  flex: 0 0 auto;
   justify-content: flex-end;
-  gap: 40px;
+  gap: 48px;
   margin-top: 0;
 }
 
 .video-grid.list .tag-mini {
-  min-width: 80px;
+  min-width: 100px;
   text-align: center;
+  padding: 4px 12px;
+}
+
+/* Error Overlay Refinement */
+.error-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  gap: 8px;
+  z-index: 10;
+}
+
+.error-overlay svg {
+  color: var(--alert);
+}
+
+.error-overlay span {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1px;
 }
 
 /* Responsive List View */
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .video-grid.list .video-info-compact {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 12px;
-    gap: 8px;
-  }
-  
-  .video-grid.list .video-stats-row {
-    width: 100%;
-    justify-content: space-between;
-    gap: 0;
-  }
-}
-
-@media (max-width: 600px) {
-  .video-grid.list .video-card {
-    flex-direction: column;
-    height: auto;
-  }
-  
-  .video-grid.list .card-status-header {
-    width: 100%;
-    flex-direction: row;
-    border-right: none;
-    border-bottom: 1px solid var(--stroke);
+    padding: 0 16px;
+    gap: 20px;
   }
   
   .video-grid.list .thumbnail-wrapper.square-thumb {
-    width: 100%;
-    aspect-ratio: 16/9;
+    width: 160px;
+  }
+  
+  .video-grid.list .video-stats-row {
+    gap: 20px;
   }
 }
 
-/* Filter Drawer */
-.filter-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+@media (max-width: 680px) {
+  .video-grid.list .video-card {
+    height: 120px; /* Keep fixed height for horizontal layout */
+    flex-direction: row;
+  }
+  
+  .video-grid.list .card-status-header {
+    width: 80px;
+    padding: 8px;
+  }
+  
+  .video-grid.list .status-indicator span {
+    display: none; /* Icon only on mobile list status */
+  }
+
+  .video-grid.list .thumbnail-wrapper.square-thumb {
+    width: 120px;
+  }
+  
+  .video-grid.list .video-info-compact {
+    padding: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .video-grid.list .video-stats-row {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .video-grid.list .video-title-sm {
+    font-size: 0.8rem;
+    max-width: 150px;
+  }
+
+  .video-grid.list .tag-mini {
+    display: none; /* Hide tags in tiny mobile list view to save space */
+  }
 }
 
 .filter-btn {
