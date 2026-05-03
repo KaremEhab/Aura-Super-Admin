@@ -9,6 +9,7 @@ import { Gyms } from './pages/Gyms/Gyms';
 import { Trainers } from './pages/Trainers/Trainers';
 import { Trainees } from './pages/Trainees/Trainees';
 import { Infrastructure } from './pages/Infrastructure/Infrastructure';
+import { Financials } from './pages/Financials/Financials';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('dashboard');
@@ -66,6 +67,8 @@ function App() {
               return <Trainees />;
             case 'infra':
               return <Infrastructure />;
+            case 'financials':
+              return <Financials />;
             default:
               return <Dashboard />;
           }
