@@ -7,6 +7,7 @@ import { Support } from './pages/Support/Support';
 import { Library } from './pages/Library/Library';
 import { Gyms } from './pages/Gyms/Gyms';
 import { Trainers } from './pages/Trainers/Trainers';
+import { Trainees } from './pages/Trainees/Trainees';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('dashboard');
@@ -60,6 +61,8 @@ function App() {
               return <Gyms />;
             case 'pt':
               return <Trainers />;
+            case 'trainees':
+              return <Trainees />;
             default:
               return <Dashboard />;
           }
