@@ -1164,8 +1164,29 @@
   }
 }
 
-/* Card Content Optimization */
-@media (max-width: 480px) {
+/* Unified Page Headers */
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--title);
+  margin: 0 0 8px 0;
+}
+
+.page-subtitle {
+  color: var(--subtitle);
+  font-size: 1rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2rem !important; /* Unified mobile size */
+  }
+
+  .page-subtitle {
+    font-size: 0.9rem !important; /* Unified mobile size */
+  }
+
   .video-info-compact {
     padding: 8px;
     gap: 4px;
