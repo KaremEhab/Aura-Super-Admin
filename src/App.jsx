@@ -8,6 +8,7 @@ import { Library } from './pages/Library/Library';
 import { Gyms } from './pages/Gyms/Gyms';
 import { Trainers } from './pages/Trainers/Trainers';
 import { Trainees } from './pages/Trainees/Trainees';
+import { Infrastructure } from './pages/Infrastructure/Infrastructure';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('dashboard');
@@ -63,6 +64,8 @@ function App() {
               return <Trainers />;
             case 'trainees':
               return <Trainees />;
+            case 'infra':
+              return <Infrastructure />;
             default:
               return <Dashboard />;
           }
