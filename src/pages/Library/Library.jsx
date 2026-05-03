@@ -139,14 +139,16 @@ export function Library() {
             </div>
 
             <div className="thumbnail-wrapper square-thumb">
-              <img src={video.thumbnail} alt={video.title} className="thumbnail" />
-              {video.duration && <span className="duration">{video.duration}</span>}
-              
-              {video.status === 'ERROR' && (
-                <div className="error-overlay">
-                  <AlertCircle size={24} />
-                  <span>{video.errorMsg}</span>
+              {video.status === 'ERROR' ? (
+                <div className="error-icon-container">
+                  <AlertCircle size={32} className="text-alert" />
+                  <span className="error-msg-mini">{video.errorMsg}</span>
                 </div>
+              ) : (
+                <>
+                  <img src={video.thumbnail} alt={video.title} className="thumbnail" />
+                  {video.duration && <span className="duration">{video.duration}</span>}
+                </>
               )}
             </div>
 
