@@ -954,7 +954,7 @@
   inset: 0;
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4px);
-  z-index: 2000;
+  z-index: 9999; /* Higher than header (50) and all other UI */
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
@@ -1127,7 +1127,7 @@
   box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.3);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .filter-drawer {
     width: 100%;
   }
@@ -1151,7 +1151,7 @@
 }
 
 /* Pagination Mobile Polish */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .library-pagination {
     flex-direction: column;
     gap: 16px;

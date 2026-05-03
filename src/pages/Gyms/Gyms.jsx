@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Filter, LayoutGrid, List, ChevronDown, Power, ExternalLink, Globe, MapPin, Activity, Shield, Users, ArrowUpRight } from 'lucide-react';
+import { Search, Filter, ChevronDown, Power, ExternalLink, Globe, MapPin, Activity, Shield, Users, ChevronLeft, ChevronRight } from 'lucide-react';
 import './Gyms.css';
 
 export function Gyms() {
@@ -129,14 +129,6 @@ export function Gyms() {
           <button className="filter-select-mini">All Regions <ChevronDown size={14} /></button>
           <button className="filter-select-mini">All Tiers <ChevronDown size={14} /></button>
         </div>
-        <div className="hub-view-toggles">
-          <button className={`hub-toggle-btn ${viewType === 'grid' ? 'active' : ''}`} onClick={() => setViewType('grid')}>
-            <LayoutGrid size={18} />
-          </button>
-          <button className={`hub-toggle-btn ${viewType === 'list' ? 'active' : ''}`} onClick={() => setViewType('list')}>
-            <List size={18} />
-          </button>
-        </div>
       </div>
 
       <div className="gyms-table-container animate-slide-up delay-6">
@@ -181,13 +173,13 @@ export function Gyms() {
         <div className="table-footer-pagination">
           <span className="results-count">Showing 1 to 8 of 1,248 gyms</span>
           <div className="pagination-controls">
-            <button className="page-nav-btn">&lt;</button>
+            <button className="page-nav"><ChevronLeft size={18} /></button>
             <button className="page-num-btn active">1</button>
             <button className="page-num-btn">2</button>
             <button className="page-num-btn">3</button>
             <span className="page-dots">...</span>
             <button className="page-num-btn">52</button>
-            <button className="page-nav-btn">&gt;</button>
+            <button className="page-nav"><ChevronRight size={18} /></button>
           </div>
         </div>
       </div>

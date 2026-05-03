@@ -7,6 +7,18 @@ export function Library() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [activeFilters, setActiveFilters] = useState([]);
 
+  // Prevent background scroll when filter drawer is open
+  React.useEffect(() => {
+    if (isFilterOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isFilterOpen]);
+
   const stats = [
     { label: 'ACTIVE STREAMS', value: '1,242', trend: '99.5%', status: 'success' },
     { label: 'STORAGE USED', value: '4.2 TB', trend: 'of 10 TB', status: 'success' },
