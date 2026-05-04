@@ -121,7 +121,7 @@ export function Library() {
   return (
     <div className="library-page animate-fade-in">
       <div className="library-header">
-        <div className="dashboard-header-text" style={{ marginTop: '24px' }}>
+        <div className="dashboard-header-text">
         <h1 className="page-title">Aura Library</h1>
         <p className="page-subtitle">Managing 1,248 high-performance exercise assets across the global network.</p>
         </div>

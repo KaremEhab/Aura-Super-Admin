@@ -50,6 +50,7 @@ export function DashboardLayout({ children, currentPage, onNavigate, branding })
           branding={branding}
           onRefresh={handleRefresh}
           onNotifClick={() => setNotifOpen(true)}
+          onNavigate={onNavigate}
         />
         <main className="main-content" key={refreshKey}>
           {children}

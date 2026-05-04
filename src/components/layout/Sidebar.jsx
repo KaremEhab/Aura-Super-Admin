@@ -20,7 +20,7 @@ export function Sidebar({ isOpen, onClose, currentPage, onNavigate, branding }) 
 
   return (
     <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
-      <div className="sidebar-logo">
+      <div className="sidebar-logo" onClick={() => onNavigate('dashboard')} style={{ cursor: 'pointer' }}>
         <div className="logo-brand">
           {branding.logo ? (
             <img src={branding.logo} alt="Logo" />

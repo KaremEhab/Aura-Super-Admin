@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DashboardLayout } from './components/layout/DashboardLayout';
 import { Dashboard } from './pages/Dashboard/Dashboard';
 import { AccountSettings } from './pages/Settings/AccountSettings';
@@ -13,6 +13,10 @@ import { Financials } from './pages/Financials/Financials';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('dashboard');
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [currentPage]);
   const [branding, setBranding] = useState({
     name: 'AURA.FIT.',
     color: '#22C55E',

@@ -11,7 +11,7 @@ import './Dashboard.css';
 export function Dashboard() {
   return (
     <div className="dashboard">
-      <div className="dashboard-header-text" style={{ marginTop: '24px' }}>
+      <div className="dashboard-header-text" style={{ marginTop: '12px' }}>
         <h1 className="page-title">Aura Dashboard</h1>
         <p className="page-subtitle">Real-time health and revenue monitoring for AURA.FIT. global infrastructure.</p>
       </div>

@@ -34,12 +34,16 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-width: 0;
   transition: margin-left 0.3s;
 }
 
+/* ── Global Content Margins ── */
 .main-content {
   flex-grow: 1;
-  padding: 0 32px 32px 32px;
+  padding: 0 32px 40px 32px;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 @media (max-width: __BP_IPAD__) {
@@ -48,13 +52,13 @@
   }
   
   .main-content {
-    padding: 0 20px 20px 20px;
+    padding: 0 24px 32px 24px;
   }
 }
 
 @media (max-width: __BP_MOBILE__) {
   .main-content {
-    padding-bottom: 140px; /* Space for bottom nav and FAB */
+    padding: 0 16px 140px 16px;
   }
 
   .fab-button {
@@ -89,6 +93,7 @@
 
 @media (max-width: 640px) {
   .main-content {
-    padding: 0 12px 140px 12px; /* Space for bottom nav and FAB */
+    padding: 0 12px 140px 12px;
   }
 }
+
