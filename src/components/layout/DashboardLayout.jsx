@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Sidebar } from './Sidebar';
 import { Header } from './Header';
 import { BottomNav } from './BottomNav';
+import { NotificationPanel } from './NotificationPanel';
 import { Plus } from 'lucide-react';
 import './DashboardLayout.css';
 
 export function DashboardLayout({ children, currentPage, onNavigate, branding }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [notifOpen, setNotifOpen] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
-    if (sidebarOpen) {
+    if (sidebarOpen || notifOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -17,7 +20,11 @@ export function DashboardLayout({ children, currentPage, onNavigate, branding })
     return () => {
       document.body.style.overflow = '';
     };
-  }, [sidebarOpen]);
+  }, [sidebarOpen, notifOpen]);
+
+  const handleRefresh = () => {
+    setRefreshKey(prev => prev + 1);
+  };
 
   return (
     <div className="dashboard-layout">
@@ -34,19 +41,29 @@ export function DashboardLayout({ children, currentPage, onNavigate, branding })
         branding={branding}
         onNavigate={(page) => {
           onNavigate(page);
-          setSidebarOpen(false); // Close sidebar on mobile after navigation
+          setSidebarOpen(false);
         }}
       />
       <div className="main-wrapper">
-        <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} branding={branding}/>
-        <main className="main-content">
+        <Header 
+          onMenuClick={() => setSidebarOpen(!sidebarOpen)} 
+          branding={branding}
+          onRefresh={handleRefresh}
+          onNotifClick={() => setNotifOpen(true)}
+        />
+        <main className="main-content" key={refreshKey}>
           {children}
         </main>
-        <BottomNav onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
+        <BottomNav 
+          onMenuClick={() => setSidebarOpen(!sidebarOpen)}
+          onRefresh={handleRefresh}
+          onNotifClick={() => setNotifOpen(true)}
+        />
         <button className="fab-button" title="Add New Gym">
           <Plus size={24} />
         </button>
       </div>
+      <NotificationPanel isOpen={notifOpen} onClose={() => setNotifOpen(false)} />
     </div>
   );
 }

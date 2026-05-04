@@ -4,7 +4,7 @@ import { useTheme } from '../../context/ThemeContext';
 import auraLogo from '../../assets/Aura.svg';
 import './Header.css';
 
-export function Header({ onMenuClick , branding}) {
+export function Header({ onMenuClick, branding, onRefresh, onNotifClick }) {
   const { isDark, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
 
@@ -37,15 +37,15 @@ export function Header({ onMenuClick , branding}) {
       </div>
 
       <div className="header-actions">
-        <button className="icon-btn" title="Refresh">
+        <button className="icon-btn" title="Refresh" onClick={onRefresh}>
           <RefreshCcw size={18} />
         </button>
         <button className="icon-btn" onClick={toggleTheme} title="Toggle Theme">
           {isDark ? <Sun size={18} /> : <Moon size={18} />}
         </button>
-        <button className="icon-btn relative" title="Notifications">
+        <button className="icon-btn relative" title="Notifications" onClick={onNotifClick}>
           <Bell size={18} />
-          <span className="notification-dot">1</span>
+          <span className="notification-dot">3</span>
         </button>
         
         <button className="btn-primary">
